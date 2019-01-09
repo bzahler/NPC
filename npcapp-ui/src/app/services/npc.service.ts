@@ -20,8 +20,9 @@ export class NpcService {
   const values =  this.client.get<Npc[]>('http://localhost:8080/npc');
   values.subscribe(
     succ => {
-      console.log('Response: ' + succ);
+      console.log('Response: ');
       this.data = succ;
+      console.log(this.data);
     },
     err => {
       console.log('Error retrieving all NPCs.');

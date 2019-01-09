@@ -15,6 +15,7 @@ import { NpcComponent } from './components/npc/npc.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { appRoutes } from './routes';
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
+    HttpClientModule,
     MatToolbarModule,
     MatCardModule, 
     MatAutocompleteModule, 
