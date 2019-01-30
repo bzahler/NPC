@@ -16,15 +16,20 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { HttpClientModule } from '@angular/common/http';
+import { AddDialog } from './components/npc/addDialog/addDialog';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NpcComponent,
     NavbarComponent,
+    AddDialog,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
@@ -57,6 +62,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatOptionModule, 
     MatSelectModule, 
     MatTooltipModule
+  ],
+  entryComponents: [
+    AddDialog
   ],
   providers: [],
   bootstrap: [AppComponent]

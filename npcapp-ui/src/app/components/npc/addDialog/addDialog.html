@@ -1,0 +1,51 @@
+<h1 mat-dialog-title>Add a new NPC</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newNpc.name">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Campaign</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newNpc.campaign">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Race</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newNpc.race">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Occupation</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newNpc.occupation">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Country</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newNpc.country">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Town</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newNpc.town">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Physical Description</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newNpc.physicalDesc">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Voice Description</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newNpc.voiceDesc">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Personality Description</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newNpc.personalityDesc">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Organization</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newNpc.organization">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Comments</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newNpc.comments">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="newNpc">Ok</button>
+</div>

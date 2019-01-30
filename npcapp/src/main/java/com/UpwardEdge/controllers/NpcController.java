@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +25,14 @@ public class NpcController {
 	
 	@GetMapping
 	public ResponseEntity<List<Npc>> getAll() {
-		System.out.println("NpcController reached");
+		System.out.println("NpcController reached. getAll()");
 		return new ResponseEntity<>(npcServ.getAll(), HttpStatus.OK);
+	}
+	
+	@PostMapping("/add")
+	public ResponseEntity<HttpStatus> addOne(@RequestBody Npc npc) {
+		System.out.println("NpcController reached. addOne()");
+		npcServ.addOne(npc);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

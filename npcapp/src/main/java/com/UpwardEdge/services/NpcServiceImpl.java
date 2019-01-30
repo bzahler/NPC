@@ -21,4 +21,9 @@ public class NpcServiceImpl implements NpcService {
 		System.out.println(ret);
 		return ret;
 	}
+
+	@Override
+	public void addOne(Npc npc) {
+		npcRepo.save(npc);
+	}
 }

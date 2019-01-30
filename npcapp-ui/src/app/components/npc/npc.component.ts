@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource, MatSnackBar } from '@angular/material';
+import { MatTableDataSource, MatSnackBar, MatDialog } from '@angular/material';
 import { Npc } from 'src/app/beans/Npc';
 import { NpcService } from 'src/app/services/npc.service';
+import { AddDialog } from './addDialog/addDialog';
 
 @Component({
   selector: 'app-npc',
@@ -18,7 +19,7 @@ export class NpcComponent implements OnInit {
     'personalityDesc', 'organization', 'comments'
   ];
   
-  constructor(private NpcService: NpcService, private snackbar: MatSnackBar) { }
+  constructor(private NpcService: NpcService, private snackbar: MatSnackBar, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.NpcService.getAllNpcs().subscribe(
@@ -31,4 +32,13 @@ export class NpcComponent implements OnInit {
     );
   }
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddDialog, {
+      width: '50%',
+      height: '50%'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog closed returning: ', result);
+    })
+  }
 }
