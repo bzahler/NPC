@@ -7,14 +7,16 @@ import { AddDialog } from './addDialog/addDialog';
 @Component({
   selector: 'app-npc',
   templateUrl: './npc.component.html',
-  styleUrls: ['./npc.component.css']
+  styleUrls: ['./npc.component.css',
+            '/../../app.component.css']
 })
 export class NpcComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Npc>();
 
+  // Determines which columns are displayed on the table
   displayedColumns: string[] = [
-    'id', 'name', 'campaign', 'race', 'occupation', 
+    'name', 'campaign', 'race', 'occupation', 
     'country', 'town', 'physicalDesc', 'voiceDesc', 
     'personalityDesc', 'organization', 'comments'
   ];
@@ -37,8 +39,18 @@ export class NpcComponent implements OnInit {
       width: '50%',
       height: '50%'
     });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialog closed returning: ', result);
-    })
+    dialogRef.afterClosed().subscribe(dialogReturn => {
+      if(dialogReturn) {
+        console.log(dialogReturn);
+        this.NpcService.addNpc(dialogReturn).subscribe(
+          succ => {
+            this.dataSource.data = this.NpcService.data;
+          },
+          err => {
+            this.snackbar.open('Failed to add new NPC.', 'OK', {duration: 5000});
+          }
+        );
+      }     
+    });
   }
 }

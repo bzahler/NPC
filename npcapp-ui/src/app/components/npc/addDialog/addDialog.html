@@ -2,27 +2,27 @@
 <div mat-dialog-content>
   <mat-form-field appearance="outline">
     <mat-label>Name</mat-label>
-    <input matInput cdkFocusInitial [(ngModel)]="newNpc.name">
+    <input matInput cdkFocusInitial required [(ngModel)]="newNpc.name">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Campaign</mat-label>
-    <input matInput cdkFocusInitial [(ngModel)]="newNpc.campaign">
+    <input matInput cdkFocusInitial required [(ngModel)]="newNpc.campaign">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Race</mat-label>
-    <input matInput cdkFocusInitial [(ngModel)]="newNpc.race">
+    <input matInput cdkFocusInitial required [(ngModel)]="newNpc.race">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Occupation</mat-label>
-    <input matInput cdkFocusInitial [(ngModel)]="newNpc.occupation">
+    <input matInput cdkFocusInitial required [(ngModel)]="newNpc.occupation">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Country</mat-label>
-    <input matInput cdkFocusInitial [(ngModel)]="newNpc.country">
+    <input matInput cdkFocusInitial required [(ngModel)]="newNpc.country">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Town</mat-label>
-    <input matInput cdkFocusInitial [(ngModel)]="newNpc.town">
+    <input matInput cdkFocusInitial required [(ngModel)]="newNpc.town">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Physical Description</mat-label>
@@ -46,6 +46,6 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="newNpc">Ok</button>
+  <button mat-raised-button class="lightblue" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button class="lightblue" [mat-dialog-close]="newNpc">Ok</button>
 </div>

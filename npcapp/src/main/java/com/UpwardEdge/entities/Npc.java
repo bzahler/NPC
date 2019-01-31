@@ -17,9 +17,9 @@ import javax.persistence.Table;
 public class Npc {
 
 	@Id
-	@Column(name="Npc_id")
-	@SequenceGenerator(name="npc_sequence", sequenceName="npc_sequence")
-	@GeneratedValue(generator="npc_sequence", strategy=GenerationType.AUTO)
+	@Column(name="npc_id")
+	@GeneratedValue(generator="npc_sequence", strategy=GenerationType.SEQUENCE)
+	@SequenceGenerator(name="npc_sequence", sequenceName="npc_sequence", allocationSize=1)
 	private int NpcId;
 	
 	private String name;
@@ -35,7 +35,6 @@ public class Npc {
 	@Column(name="personality_desc")
 	private String personalityDesc;
 	private String organization;
-	
 	private String comments;
 
 	public Npc(int npcId, String name, String campaign, String race, String occupation, String country, String town,

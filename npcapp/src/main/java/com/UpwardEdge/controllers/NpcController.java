@@ -32,6 +32,7 @@ public class NpcController {
 	@PostMapping("/add")
 	public ResponseEntity<HttpStatus> addOne(@RequestBody Npc npc) {
 		System.out.println("NpcController reached. addOne()");
+		System.out.println(npc);
 		npcServ.addOne(npc);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
