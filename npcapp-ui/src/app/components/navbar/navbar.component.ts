@@ -13,8 +13,4 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  goToNpc() {
-    this.router.navigateByUrl('/npc');
-  }
-
 }

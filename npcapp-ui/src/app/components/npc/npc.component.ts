@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatSnackBar, MatDialog } from '@angular/material';
-import { Npc } from 'src/app/beans/Npc';
-import { NpcService } from 'src/app/services/npc.service';
+import { Npc } from '../../beans/Npc';
+import { NpcService } from '../../services/npc.service';
 import { AddDialog } from './addDialog/addDialog';
 
 @Component({

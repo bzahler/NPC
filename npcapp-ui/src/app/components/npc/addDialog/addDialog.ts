@@ -1,6 +1,6 @@
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Inject, Component } from '@angular/core';
-import { Npc } from 'src/app/beans/Npc';
+import { Npc } from '../../../beans/Npc';
 
 @Component({
     selector: 'add-dialog',
