@@ -9,8 +9,7 @@ import { AddDialog } from './addDialog/addDialog';
 @Component({
   selector: 'app-npc',
   templateUrl: './npc.component.html',
-  styleUrls: ['./npc.component.css',
-            '/../../app.component.css']
+  styleUrls: ['./npc.component.css']
 })
 export class NpcComponent implements OnInit {
 
