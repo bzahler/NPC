@@ -4,7 +4,6 @@ import { Npc } from 'src/app/entities/Npc';
 import { NpcService } from 'src/app/services/npc.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
-import { AddDialogComponent } from './add-dialog/add-dialog.component';
 
 @Component({
   selector: 'app-npc',
@@ -36,7 +35,7 @@ export class NpcComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(AddDialogComponent, {
+    const dialogRef = this.dialog.open(null, {
       width: '50%',
       height: '50%'
     });

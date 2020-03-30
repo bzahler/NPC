@@ -10,8 +10,9 @@ public class Npc {
 	private String NpcId;
 
 	private String name;
-	private int campaignId;
+	private String campaign;
 	private String race;
+	private String occupation;
 	private String country;
 	private String town;
 	private String physicalDesc;
@@ -20,13 +21,14 @@ public class Npc {
 	private String organization;
 	private String comments;
 	
-	public Npc(String npcId, String name, int campaignId, String race, String country, String town, String physicalDesc,
-			String voiceDesc, String personalityDesc, String organization, String comments) {
+	public Npc(String npcId, String name, String campaign, String race, String occupation, String country, String town,
+			String physicalDesc, String voiceDesc, String personalityDesc, String organization, String comments) {
 		super();
 		NpcId = npcId;
 		this.name = name;
-		this.campaignId = campaignId;
+		this.campaign = campaign;
 		this.race = race;
+		this.occupation = occupation;
 		this.country = country;
 		this.town = town;
 		this.physicalDesc = physicalDesc;
@@ -51,17 +53,23 @@ public class Npc {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getCampaignId() {
-		return campaignId;
+	public String getCampaign() {
+		return campaign;
 	}
-	public void setCampaignId(int campaignId) {
-		this.campaignId = campaignId;
+	public void setCampaign(String campaign) {
+		this.campaign = campaign;
 	}
 	public String getRace() {
 		return race;
 	}
 	public void setRace(String race) {
 		this.race = race;
+	}
+	public String getOccupation() {
+		return occupation;
+	}
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
 	}
 	public String getCountry() {
 		return country;
@@ -110,10 +118,11 @@ public class Npc {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((NpcId == null) ? 0 : NpcId.hashCode());
-		result = prime * result + campaignId;
+		result = prime * result + ((campaign == null) ? 0 : campaign.hashCode());
 		result = prime * result + ((comments == null) ? 0 : comments.hashCode());
 		result = prime * result + ((country == null) ? 0 : country.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((occupation == null) ? 0 : occupation.hashCode());
 		result = prime * result + ((organization == null) ? 0 : organization.hashCode());
 		result = prime * result + ((personalityDesc == null) ? 0 : personalityDesc.hashCode());
 		result = prime * result + ((physicalDesc == null) ? 0 : physicalDesc.hashCode());
@@ -136,7 +145,10 @@ public class Npc {
 				return false;
 		} else if (!NpcId.equals(other.NpcId))
 			return false;
-		if (campaignId != other.campaignId)
+		if (campaign == null) {
+			if (other.campaign != null)
+				return false;
+		} else if (!campaign.equals(other.campaign))
 			return false;
 		if (comments == null) {
 			if (other.comments != null)
@@ -152,6 +164,11 @@ public class Npc {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
+			return false;
+		if (occupation == null) {
+			if (other.occupation != null)
+				return false;
+		} else if (!occupation.equals(other.occupation))
 			return false;
 		if (organization == null) {
 			if (other.organization != null)
@@ -187,10 +204,9 @@ public class Npc {
 	}
 	@Override
 	public String toString() {
-		return "Npc [NpcId=" + NpcId + ", name=" + name + ", campaignId=" + campaignId + ", race=" + race + ", country="
-				+ country + ", town=" + town + ", physicalDesc=" + physicalDesc + ", voiceDesc=" + voiceDesc
-				+ ", personalityDesc=" + personalityDesc + ", organization=" + organization + ", comments=" + comments
-				+ "]";
+		return "Npc [NpcId=" + NpcId + ", name=" + name + ", campaign=" + campaign + ", race=" + race + ", occupation="
+				+ occupation + ", country=" + country + ", town=" + town + ", physicalDesc=" + physicalDesc
+				+ ", voiceDesc=" + voiceDesc + ", personalityDesc=" + personalityDesc + ", organization=" + organization
+				+ ", comments=" + comments + "]";
 	}
-
 }

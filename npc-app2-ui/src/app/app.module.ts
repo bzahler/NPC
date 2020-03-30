@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NpcComponent } from './components/npc/npc.component';
-import { AddDialogComponent } from './components/npc/add-dialog/add-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
@@ -36,6 +35,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { AddDialogComponent } from './components/npc/add-dialog/add-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     AddDialogComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
