@@ -11,20 +11,6 @@ export class Npc {
     private organization: string;
     private comments: string;
 
-	constructor($NpcId: string, $name: string, $campaignId: number, $race: string, $country: string, $town: string, $physicalDesc: string, $voiceDesc: string, $personalityDesc: string, $organization: string, $comments: string) {
-		this.NpcId = $NpcId;
-		this.name = $name;
-		this.campaignId = $campaignId;
-		this.race = $race;
-		this.country = $country;
-		this.town = $town;
-		this.physicalDesc = $physicalDesc;
-		this.voiceDesc = $voiceDesc;
-		this.personalityDesc = $personalityDesc;
-		this.organization = $organization;
-		this.comments = $comments;
-	}
-
     /**
      * Getter $NpcId
      * @return {string}
