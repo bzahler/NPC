@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { Npc } from 'src/app/entities/Npc';
 import { NpcService } from 'src/app/services/npc.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialog } from '@angular/material/dialog';
+import { AddDialogComponent } from './add-dialog/add-dialog.component';
 
 @Component({
   selector: 'app-npc',
@@ -12,6 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class NpcComponent implements OnInit {
 
+  @ViewChild(MatTable) table: MatTable<Npc>;
   dataSource = new MatTableDataSource<Npc>();
 
   // Determines which columns are displayed on the table
@@ -35,16 +37,17 @@ export class NpcComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(null, {
+    const dialogRef = this.dialog.open(AddDialogComponent, {
       width: '50%',
       height: '50%'
     });
     dialogRef.afterClosed().subscribe(dialogReturn => {
       if(dialogReturn) {
-        console.log(dialogReturn);
         this.NpcService.addNpc(dialogReturn).subscribe(
           succ => {
-            this.dataSource.data = this.NpcService.data;
+            this.dataSource.data.push(dialogReturn);
+            this.NpcService.data = this.dataSource.data;
+            this.table.renderRows();
           },
           err => {
             this.snackbar.open('Failed to add new NPC.', 'OK', {duration: 5000});
@@ -52,5 +55,9 @@ export class NpcComponent implements OnInit {
         );
       }     
     });
+  }
+
+  refresh() {
+
   }
 }
