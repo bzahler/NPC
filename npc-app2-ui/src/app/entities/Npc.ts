@@ -1,5 +1,5 @@
 export class Npc {
-    public NpcId: string;
+    public npcId: string;
     public name: string;
     public campaign: number;
     public race: string;

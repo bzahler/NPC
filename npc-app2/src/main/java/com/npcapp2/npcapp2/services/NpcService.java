@@ -6,5 +6,7 @@ import com.npcapp2.npcapp2.entities.Npc;
 
 public interface NpcService {
 	List<Npc> getAll();
-	void addOne(Npc npc);
+	Npc addOne(Npc npc);
+	void deleteOne(String npcId);
+	void updateOne(Npc npc);
 }

@@ -7,10 +7,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Npc {
 
 	@Id
-	private String NpcId;
+	private String npcId;
 
 	private String name;
-	private String campaign;
 	private String race;
 	private String occupation;
 	private String country;
@@ -20,44 +19,17 @@ public class Npc {
 	private String personalityDesc;
 	private String organization;
 	private String comments;
-	
-	public Npc(String npcId, String name, String campaign, String race, String occupation, String country, String town,
-			String physicalDesc, String voiceDesc, String personalityDesc, String organization, String comments) {
-		super();
-		NpcId = npcId;
-		this.name = name;
-		this.campaign = campaign;
-		this.race = race;
-		this.occupation = occupation;
-		this.country = country;
-		this.town = town;
-		this.physicalDesc = physicalDesc;
-		this.voiceDesc = voiceDesc;
-		this.personalityDesc = personalityDesc;
-		this.organization = organization;
-		this.comments = comments;
-	}
-	public Npc() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	public String getNpcId() {
-		return NpcId;
+		return npcId;
 	}
 	public void setNpcId(String npcId) {
-		NpcId = npcId;
+		this.npcId = npcId;
 	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getCampaign() {
-		return campaign;
-	}
-	public void setCampaign(String campaign) {
-		this.campaign = campaign;
 	}
 	public String getRace() {
 		return race;
@@ -113,15 +85,33 @@ public class Npc {
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
+	public Npc(String npcId, String name, String race, String occupation, String country, String town,
+			String physicalDesc, String voiceDesc, String personalityDesc, String organization, String comments) {
+		super();
+		this.npcId = npcId;
+		this.name = name;
+		this.race = race;
+		this.occupation = occupation;
+		this.country = country;
+		this.town = town;
+		this.physicalDesc = physicalDesc;
+		this.voiceDesc = voiceDesc;
+		this.personalityDesc = personalityDesc;
+		this.organization = organization;
+		this.comments = comments;
+	}
+	public Npc() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((NpcId == null) ? 0 : NpcId.hashCode());
-		result = prime * result + ((campaign == null) ? 0 : campaign.hashCode());
 		result = prime * result + ((comments == null) ? 0 : comments.hashCode());
 		result = prime * result + ((country == null) ? 0 : country.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((npcId == null) ? 0 : npcId.hashCode());
 		result = prime * result + ((occupation == null) ? 0 : occupation.hashCode());
 		result = prime * result + ((organization == null) ? 0 : organization.hashCode());
 		result = prime * result + ((personalityDesc == null) ? 0 : personalityDesc.hashCode());
@@ -140,16 +130,6 @@ public class Npc {
 		if (getClass() != obj.getClass())
 			return false;
 		Npc other = (Npc) obj;
-		if (NpcId == null) {
-			if (other.NpcId != null)
-				return false;
-		} else if (!NpcId.equals(other.NpcId))
-			return false;
-		if (campaign == null) {
-			if (other.campaign != null)
-				return false;
-		} else if (!campaign.equals(other.campaign))
-			return false;
 		if (comments == null) {
 			if (other.comments != null)
 				return false;
@@ -164,6 +144,11 @@ public class Npc {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
+			return false;
+		if (npcId == null) {
+			if (other.npcId != null)
+				return false;
+		} else if (!npcId.equals(other.npcId))
 			return false;
 		if (occupation == null) {
 			if (other.occupation != null)
@@ -204,9 +189,11 @@ public class Npc {
 	}
 	@Override
 	public String toString() {
-		return "Npc [NpcId=" + NpcId + ", name=" + name + ", campaign=" + campaign + ", race=" + race + ", occupation="
-				+ occupation + ", country=" + country + ", town=" + town + ", physicalDesc=" + physicalDesc
-				+ ", voiceDesc=" + voiceDesc + ", personalityDesc=" + personalityDesc + ", organization=" + organization
-				+ ", comments=" + comments + "]";
+		return "Npc [npcId=" + npcId + ", name=" + name + ", race=" + race + ", occupation=" + occupation + ", country="
+				+ country + ", town=" + town + ", physicalDesc=" + physicalDesc + ", voiceDesc=" + voiceDesc
+				+ ", personalityDesc=" + personalityDesc + ", organization=" + organization + ", comments=" + comments
+				+ "]";
 	}
+
+	
 }
