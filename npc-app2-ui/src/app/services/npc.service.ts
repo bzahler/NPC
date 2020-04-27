@@ -16,7 +16,9 @@ export class NpcService {
     return values;
   }
 
-  // This should honestly return an the npc that was added. Need to get the ID that is generated server side.
+  /**
+   * This returns the npc so that the server generated object id can be connected to the object (used for removal).
+   */
   addNpc(newNpc: Npc): Observable<Npc> {
     console.log('Adding an NPC.');
     const result = this.client.post<Npc>('http://localhost:8080/npc/add', newNpc);

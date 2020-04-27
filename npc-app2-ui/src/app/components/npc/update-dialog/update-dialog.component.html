@@ -1,0 +1,51 @@
+<h1 mat-dialog-title>Update NPC</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="record.name">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Campaign</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="record.campaign">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Race</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="record.race">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Occupation</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="record.occupation">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Country</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="record.country">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Town</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="record.town">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Physical Description</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="record.physicalDesc">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Voice Description</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="record.voiceDesc">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Personality Description</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="record.personalityDesc">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Organization</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="record.organization">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Comments</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="record.comments">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button class="lightblue" [mat-dialog-close]="record">OK</button>
+  <button mat-raised-button class="lightblue" (click)="onNoClick()">Cancel</button>
+</div>

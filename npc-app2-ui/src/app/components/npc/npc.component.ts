@@ -5,6 +5,7 @@ import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { Npc } from 'src/app/entities/Npc';
 import { NpcService } from 'src/app/services/npc.service';
 import { AddDialogComponent } from './add-dialog/add-dialog.component';
+import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
 
 @Component({
   selector: 'app-npc',
@@ -21,10 +22,10 @@ export class NpcComponent implements OnInit {
     'name', 'campaign', 'race', 'occupation',
     'country', 'town', 'physicalDesc', 'voiceDesc',
     'personalityDesc', 'organization', 'comments',
-    'remove'
+    'update', 'remove'
   ];
 
-  constructor(private NpcService: NpcService, private snackbar: MatSnackBar, private dialog: MatDialog) { }
+  constructor(private NpcService: NpcService, private snackbar: MatSnackBar, private addDialog: MatDialog, private updateDialog: MatDialog) { }
 
   ngOnInit() {
     this.NpcService.getAllNpcs().subscribe(
@@ -37,8 +38,8 @@ export class NpcComponent implements OnInit {
     );
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(AddDialogComponent, {
+  openAddDialog(): void {
+    const dialogRef = this.addDialog.open(AddDialogComponent, {
       width: '50%',
       height: '50%'
     });
@@ -48,11 +49,38 @@ export class NpcComponent implements OnInit {
           succ => {
             console.log('Received from server: ', succ);
             this.dataSource.data.push(succ);
-            this.NpcService.data = this.dataSource.data;
             this.table.renderRows();
           },
           err => {
             this.snackbar.open('Failed to add new NPC.', 'OK', { duration: 5000 });
+          }
+        );
+      }
+    });
+  }
+
+  openUpdateDialog(index: number): void {
+    let record = this.dataSource.data.slice(index, index+1)[0];
+
+    const dialogRef = this.updateDialog.open(UpdateDialogComponent, {
+      data: record,
+      width: '50%',
+      height: '50%'
+    });
+    dialogRef.afterClosed().subscribe(dialogReturn => {
+      if (dialogReturn) {
+        this.NpcService.updateNpc(dialogReturn).subscribe(
+          succ => {
+            // Remove the old record
+            this.dataSource.data.splice(index, 1);
+
+            // Add the new
+            console.log('Received from server: ', succ);
+            this.dataSource.data.push(dialogReturn);
+            this.table.renderRows();
+          },
+          err => {
+            this.snackbar.open('Failed to update NPC.', 'OK', { duration: 5000 });
           }
         );
       }

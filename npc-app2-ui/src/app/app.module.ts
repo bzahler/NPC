@@ -36,7 +36,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AddDialogComponent } from './components/npc/add-dialog/add-dialog.component';
-import { FormsModule } from '@angular/forms';
+import { UpdateDialogComponent } from './components/npc/update-dialog/update-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -44,10 +45,12 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     NpcComponent,
     AddDialogComponent,
+    UpdateDialogComponent
   ],
   imports: [
-    FormsModule,
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSliderModule,
