@@ -3,6 +3,14 @@ package com.npcapp2.npcapp2.entities;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/*
+ * Any non player entity that the player characters will interact 
+ * with enough that is worth noting. This could be a villian, a 
+ * shopkeeper, a random street person that was supposed to just 
+ * direct them to a nearby shop but instead gets pulled along and 
+ * is now a member of the party, or even a monster that the players 
+ * negotiate with rather than slay.
+ */
 @Document
 public class Npc {
 
@@ -19,6 +27,7 @@ public class Npc {
 	private String personalityDesc;
 	private String organization;
 	private String comments;
+	
 	public String getNpcId() {
 		return npcId;
 	}

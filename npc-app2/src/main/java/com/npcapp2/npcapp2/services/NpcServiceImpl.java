@@ -17,7 +17,7 @@ public class NpcServiceImpl implements NpcService {
 
 	@Override
 	public List<Npc> getAll() {
-		System.out.println("Service reached: getAll");
+		System.out.println("NpcService reached: getAll");
 		List<Npc> ret = npcRepo.findAll();
 		System.out.println(ret.get(0).getNpcId());
 		return ret;
@@ -25,19 +25,19 @@ public class NpcServiceImpl implements NpcService {
 
 	@Override
 	public Npc addOne(Npc npc) {
-		System.out.println("Service reached: addOne");
+		System.out.println("NpcService reached: addOne");
 		return npcRepo.save(npc);
 	}
 	
 	@Override
 	public void updateOne(Npc npc) {
-		System.out.println("Service reached: updateOne");
+		System.out.println("NpcService reached: updateOne");
 		npcRepo.save(npc);
 	}
 
 	@Override
 	public void deleteOne(String npcId) {
-		System.out.println("Service reached: deleteOne");
+		System.out.println("NpcService reached: deleteOne");
 		ObjectId id = new ObjectId(npcId);
 		npcRepo.deleteById(id);	
 	}

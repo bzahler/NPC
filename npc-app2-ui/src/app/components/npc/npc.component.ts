@@ -6,6 +6,8 @@ import { Npc } from 'src/app/entities/Npc';
 import { NpcService } from 'src/app/services/npc.service';
 import { AddDialogComponent } from './add-dialog/add-dialog.component';
 import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-npc',
@@ -15,6 +17,8 @@ import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
 export class NpcComponent implements OnInit {
 
   @ViewChild(MatTable) table: MatTable<Npc>;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
   dataSource = new MatTableDataSource<Npc>();
 
   // Determines which columns are displayed on the table
@@ -28,6 +32,9 @@ export class NpcComponent implements OnInit {
   constructor(private NpcService: NpcService, private snackbar: MatSnackBar, private addDialog: MatDialog, private updateDialog: MatDialog) { }
 
   ngOnInit() {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+
     this.NpcService.getAllNpcs().subscribe(
       succ => {
         this.dataSource.data = succ;
@@ -47,9 +54,11 @@ export class NpcComponent implements OnInit {
       if (dialogReturn) {
         this.NpcService.addNpc(dialogReturn).subscribe(
           succ => {
+            this.snackbar.open('Successfully added new NPC.', 'OK', { duration: 2000 });
             console.log('Received from server: ', succ);
             this.dataSource.data.push(succ);
-            this.table.renderRows();
+            // This is stupid. But it triggers the tables update. Using renderRows() wasn't working with the paginator.
+            this.dataSource.data = this.dataSource.data;
           },
           err => {
             this.snackbar.open('Failed to add new NPC.', 'OK', { duration: 5000 });
@@ -104,5 +113,10 @@ export class NpcComponent implements OnInit {
         }
       );
     }
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
