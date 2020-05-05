@@ -19,7 +19,6 @@ public class NpcServiceImpl implements NpcService {
 	public List<Npc> getAll() {
 		System.out.println("NpcService reached: getAll");
 		List<Npc> ret = npcRepo.findAll();
-		System.out.println(ret.get(0).getNpcId());
 		return ret;
 	}
 

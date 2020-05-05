@@ -8,6 +8,7 @@ import { AddDialogComponent } from './add-dialog/add-dialog.component';
 import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-npc',
@@ -23,13 +24,11 @@ export class NpcComponent implements OnInit {
 
   // Determines which columns are displayed on the table
   displayedColumns: string[] = [
-    'name', 'campaign', 'race', 'occupation',
-    'country', 'town', 'physicalDesc', 'voiceDesc',
-    'personalityDesc', 'organization', 'comments',
-    'update', 'remove'
+    'name', 'race', 'occupation',
+    'country', 'town','organization', 'remove'
   ];
 
-  constructor(private NpcService: NpcService, private snackbar: MatSnackBar, private addDialog: MatDialog, private updateDialog: MatDialog) { }
+  constructor(private router: Router,  private NpcService: NpcService, private snackbar: MatSnackBar, private addDialog: MatDialog, private updateDialog: MatDialog) { }
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
@@ -38,6 +37,7 @@ export class NpcComponent implements OnInit {
     this.NpcService.getAllNpcs().subscribe(
       succ => {
         this.dataSource.data = succ;
+        this.NpcService.saveData(this.dataSource.data);
       },
       err => {
         this.snackbar.open('Failed to retrieve NPCs.', 'OK', { duration: 5000 });
@@ -47,7 +47,7 @@ export class NpcComponent implements OnInit {
 
   openAddDialog(): void {
     const dialogRef = this.addDialog.open(AddDialogComponent, {
-      width: '50%',
+      width: '60%',
       height: '50%'
     });
     dialogRef.afterClosed().subscribe(dialogReturn => {
@@ -59,6 +59,7 @@ export class NpcComponent implements OnInit {
             this.dataSource.data.push(succ);
             // This is stupid. But it triggers the tables update. Using renderRows() wasn't working with the paginator.
             this.dataSource.data = this.dataSource.data;
+            this.NpcService.saveData(this.dataSource.data);
           },
           err => {
             this.snackbar.open('Failed to add new NPC.', 'OK', { duration: 5000 });
@@ -86,7 +87,8 @@ export class NpcComponent implements OnInit {
             // Add the new
             console.log('Received from server: ', succ);
             this.dataSource.data.push(dialogReturn);
-            this.table.renderRows();
+            this.dataSource.data = this.dataSource.data;
+            this.NpcService.saveData(this.dataSource.data);
           },
           err => {
             this.snackbar.open('Failed to update NPC.', 'OK', { duration: 5000 });
@@ -106,7 +108,8 @@ export class NpcComponent implements OnInit {
         succ => {
           this.snackbar.open('Successfully removed NPC.', 'OK', { duration: 5000 });
           this.dataSource.data.splice(index, 1);
-          this.table.renderRows();
+          this.dataSource.data = this.dataSource.data;
+          this.NpcService.saveData(this.dataSource.data);
         },
         err => {
           this.snackbar.open('Failed to remove NPC.', 'OK', { duration: 5000 });

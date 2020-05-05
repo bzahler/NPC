@@ -7,6 +7,9 @@ import { Npc } from '../entities/Npc';
   providedIn: 'root'
 })
 export class NpcService {
+
+  private data: Npc[];
+
   constructor(private client: HttpClient) { }
 
   getAllNpcs(): Observable<Npc[]> {
@@ -38,6 +41,22 @@ export class NpcService {
     const result = this.client.post('http://localhost:8080/npc/delete', npcId);
     
     return result;
+  }
+
+  getById(id: string) {
+    return this.data.find(npc => npc.npcId === id);
+  }
+
+  getAllData() {
+    return this.data;
+  }
+
+  saveData(data: Npc[]) {
+    this.data = data;
+  }
+
+  printServiceData() {
+    console.log(this.data);
   }
 
 }

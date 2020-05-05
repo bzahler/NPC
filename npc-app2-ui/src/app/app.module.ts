@@ -38,6 +38,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AddDialogComponent } from './components/npc/add-dialog/add-dialog.component';
 import { UpdateDialogComponent } from './components/npc/update-dialog/update-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NpcDetailsComponent } from './components/npc/npc-details/npc-details.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     NpcComponent,
     AddDialogComponent,
-    UpdateDialogComponent
+    UpdateDialogComponent,
+    NpcDetailsComponent
   ],
   imports: [
     BrowserModule,
