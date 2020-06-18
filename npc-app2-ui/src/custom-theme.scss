@@ -19,7 +19,7 @@ $npc-app2-ui-accent: mat-palette($mat-pink, A200, A100, A400);
 $npc-app2-ui-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$npc-app2-ui-theme: mat-light-theme($npc-app2-ui-primary, $npc-app2-ui-accent, $npc-app2-ui-warn);
+$npc-app2-ui-theme: mat-dark-theme($npc-app2-ui-primary, $npc-app2-ui-accent, $npc-app2-ui-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component

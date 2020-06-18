@@ -1,1 +1,15 @@
-<p>npc-details works!</p>
+<mat-card>
+    <mat-card-title>{{data.name}}</mat-card-title>
+    <mat-card-subtitle>{{data.race}} {{data.occupation}}</mat-card-subtitle>
+    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6cde5a02-ae2b-4d56-9913-ee66f170a7eb/dbwgld6-258b011a-debc-47ae-aa72-44e7fd38dc4f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNmNkZTVhMDItYWUyYi00ZDU2LTk5MTMtZWU2NmYxNzBhN2ViXC9kYndnbGQ2LTI1OGIwMTFhLWRlYmMtNDdhZS1hYTcyLTQ0ZTdmZDM4ZGM0Zi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.ZzRnvXt0Pgc0JBbY827MUDOmlomOKeJORs0pIQ1Z1jk" height="200" width="200" alt="Dwarf Adventurer">
+    <mat-card-content>
+        Npc ID: {{data.npcId}}<br>
+        Country: {{data.country}}<br>
+        Town: {{data.town}}<br>
+        Organization: {{data.organization}}<br>
+        Physical Description: {{data.physicalDesc}}<br>
+        Personality Description: {{data.personalityDesc}}<br>
+        Voice Description: {{data.voiceDesc}}<br>
+        Comments: {{data.comments}}<br>
+    </mat-card-content>
+</mat-card>
