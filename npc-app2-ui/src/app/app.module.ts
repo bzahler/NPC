@@ -39,6 +39,8 @@ import { AddDialogComponent } from './components/npc/add-dialog/add-dialog.compo
 import { UpdateDialogComponent } from './components/npc/update-dialog/update-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NpcDetailsComponent } from './components/npc/npc-details/npc-details.component';
+import { HomeComponent } from './components/home/home.component';
+import { CampaignComponent } from './components/campaign/campaign.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { NpcDetailsComponent } from './components/npc/npc-details/npc-details.co
     NpcComponent,
     AddDialogComponent,
     UpdateDialogComponent,
-    NpcDetailsComponent
+    NpcDetailsComponent,
+    HomeComponent,
+    CampaignComponent
   ],
   imports: [
     BrowserModule,
