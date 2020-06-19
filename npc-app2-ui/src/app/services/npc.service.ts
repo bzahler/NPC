@@ -29,9 +29,9 @@ export class NpcService {
     return result;
   }
 
-  updateNpc(updatedNpc: Npc): Observable<Object> {
+  updateNpc(updatedNpc: Npc): Observable<Npc> {
     console.log('Updating npc: ', updatedNpc);
-    const result = this.client.post('http://localhost:8080/npc/update', updatedNpc);
+    const result = this.client.post<Npc>('http://localhost:8080/npc/update', updatedNpc);
 
     return result;
   }

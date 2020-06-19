@@ -1,15 +1,65 @@
 <mat-card>
     <mat-card-title>{{data.name}}</mat-card-title>
     <mat-card-subtitle>{{data.race}} {{data.occupation}}</mat-card-subtitle>
-    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6cde5a02-ae2b-4d56-9913-ee66f170a7eb/dbwgld6-258b011a-debc-47ae-aa72-44e7fd38dc4f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNmNkZTVhMDItYWUyYi00ZDU2LTk5MTMtZWU2NmYxNzBhN2ViXC9kYndnbGQ2LTI1OGIwMTFhLWRlYmMtNDdhZS1hYTcyLTQ0ZTdmZDM4ZGM0Zi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.ZzRnvXt0Pgc0JBbY827MUDOmlomOKeJORs0pIQ1Z1jk" height="200" width="200" alt="Dwarf Adventurer">
-    <mat-card-content>
-        Npc ID: {{data.npcId}}<br>
-        Country: {{data.country}}<br>
-        Town: {{data.town}}<br>
-        Organization: {{data.organization}}<br>
-        Physical Description: {{data.physicalDesc}}<br>
-        Personality Description: {{data.personalityDesc}}<br>
-        Voice Description: {{data.voiceDesc}}<br>
-        Comments: {{data.comments}}<br>
+    <img *ngIf="data.imgLink != null" src={{data.imgLink}} height="200" width="200">
+    <mat-card-content *ngIf="editable === false">
+        <mat-list>
+            <mat-list-item>Npc ID: {{data.npcId}}</mat-list-item>
+            <mat-list-item>Country: {{data.country}}</mat-list-item>
+            <mat-list-item>Town: {{data.town}}</mat-list-item>
+            <mat-list-item>Organization: {{data.organization}}</mat-list-item>
+            <mat-list-item>Physical Description: {{data.physicalDesc}}</mat-list-item>
+            <mat-list-item>Personality Description: {{data.personalityDesc}}</mat-list-item>
+            <mat-list-item>Voice Description: {{data.voiceDesc}}</mat-list-item>
+            <mat-list-item>Comments: {{data.comments}}</mat-list-item>
+        </mat-list>
+    </mat-card-content>
+    <mat-card-content *ngIf="editable === true">
+        <mat-form-field appearance="standard">
+            <mat-label>Name:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.name">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Race:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.race">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Occupation:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.occupation">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Image URL:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.imgLink">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Country:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.country">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Town:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.town">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Organization:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.organization">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Physical Description:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.physicalDesc">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Personality Description:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.personalityDesc">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Voice Description:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.voiceDesc">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Comments:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.comments">
+        </mat-form-field><br>
     </mat-card-content>
 </mat-card>
+<button *ngIf="editable === false" mat-raised-button (click)="toggleEditable()">Edit</button>
+<button *ngIf="editable === true" mat-raised-button (click)="saveNpc()">Save</button>

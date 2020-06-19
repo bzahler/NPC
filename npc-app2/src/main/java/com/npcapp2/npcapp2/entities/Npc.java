@@ -27,7 +27,7 @@ public class Npc {
 	private String personalityDesc;
 	private String organization;
 	private String comments;
-	
+	private String imgLink;
 	public String getNpcId() {
 		return npcId;
 	}
@@ -94,24 +94,11 @@ public class Npc {
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
-	public Npc(String npcId, String name, String race, String occupation, String country, String town,
-			String physicalDesc, String voiceDesc, String personalityDesc, String organization, String comments) {
-		super();
-		this.npcId = npcId;
-		this.name = name;
-		this.race = race;
-		this.occupation = occupation;
-		this.country = country;
-		this.town = town;
-		this.physicalDesc = physicalDesc;
-		this.voiceDesc = voiceDesc;
-		this.personalityDesc = personalityDesc;
-		this.organization = organization;
-		this.comments = comments;
+	public String getImgLink() {
+		return imgLink;
 	}
-	public Npc() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void setImgLink(String imgLink) {
+		this.imgLink = imgLink;
 	}
 	@Override
 	public int hashCode() {
@@ -119,6 +106,7 @@ public class Npc {
 		int result = 1;
 		result = prime * result + ((comments == null) ? 0 : comments.hashCode());
 		result = prime * result + ((country == null) ? 0 : country.hashCode());
+		result = prime * result + ((imgLink == null) ? 0 : imgLink.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((npcId == null) ? 0 : npcId.hashCode());
 		result = prime * result + ((occupation == null) ? 0 : occupation.hashCode());
@@ -148,6 +136,11 @@ public class Npc {
 			if (other.country != null)
 				return false;
 		} else if (!country.equals(other.country))
+			return false;
+		if (imgLink == null) {
+			if (other.imgLink != null)
+				return false;
+		} else if (!imgLink.equals(other.imgLink))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -196,13 +189,33 @@ public class Npc {
 			return false;
 		return true;
 	}
+	public Npc(String npcId, String name, String race, String occupation, String country, String town,
+			String physicalDesc, String voiceDesc, String personalityDesc, String organization, String comments,
+			String imgLink) {
+		super();
+		this.npcId = npcId;
+		this.name = name;
+		this.race = race;
+		this.occupation = occupation;
+		this.country = country;
+		this.town = town;
+		this.physicalDesc = physicalDesc;
+		this.voiceDesc = voiceDesc;
+		this.personalityDesc = personalityDesc;
+		this.organization = organization;
+		this.comments = comments;
+		this.imgLink = imgLink;
+	}
+	public Npc() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String toString() {
 		return "Npc [npcId=" + npcId + ", name=" + name + ", race=" + race + ", occupation=" + occupation + ", country="
 				+ country + ", town=" + town + ", physicalDesc=" + physicalDesc + ", voiceDesc=" + voiceDesc
 				+ ", personalityDesc=" + personalityDesc + ", organization=" + organization + ", comments=" + comments
-				+ "]";
+				+ ", imgLink=" + imgLink + "]";
 	}
 
-	
 }

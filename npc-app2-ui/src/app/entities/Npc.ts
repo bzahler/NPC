@@ -11,5 +11,6 @@ export class Npc {
     public personalityDesc: string;
     public organization: string;
     public comments: string;
+    public imgLink: string;
 
 }
