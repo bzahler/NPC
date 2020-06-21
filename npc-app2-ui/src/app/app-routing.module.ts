@@ -4,6 +4,7 @@ import { NpcComponent } from './components/npc/npc.component';
 import { NpcDetailsComponent } from './components/npc/npc-details/npc-details.component';
 import { HomeComponent } from './components/home/home.component';
 import { CampaignComponent } from './components/campaign/campaign.component';
+import { CampaignDetailsComponent } from './components/campaign/campaign-details/campaign-details.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'campaign',
     component: CampaignComponent
+  },
+  {
+    path: 'campaign-details/:id',
+    component: CampaignDetailsComponent
   },
   {
     path: 'home',

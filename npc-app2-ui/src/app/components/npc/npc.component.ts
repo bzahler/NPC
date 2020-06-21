@@ -72,7 +72,7 @@ export class NpcComponent implements OnInit {
 
   /*
   // Update moved to details page, leaving this for reference. Just in case y'know?
-  // Don't forget to uncomment the constructor too
+  // Don't forget to uncomment the constructor and the html ng-template
   openUpdateDialog(index: number): void {
     let record = this.dataSource.data.slice(index, index+1)[0];
 

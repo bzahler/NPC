@@ -1,27 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { Campaign } from 'src/app/entities/Campaign';
 import { ActivatedRoute } from '@angular/router';
-import { NpcService } from 'src/app/services/npc.service';
-import { Npc } from 'src/app/entities/Npc';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CampaignService } from 'src/app/services/campaign.service';
 
 @Component({
-  selector: 'app-npc-details',
-  templateUrl: './npc-details.component.html',
-  styleUrls: ['./npc-details.component.css']
+  selector: 'app-campaign-details',
+  templateUrl: './campaign-details.component.html',
+  styleUrls: ['./campaign-details.component.css']
 })
-export class NpcDetailsComponent implements OnInit {
+export class CampaignDetailsComponent implements OnInit {
 
   id: string;
-  data: Npc;
+  data: Campaign;
   editable: boolean = false;
 
-  constructor(private activeRoute: ActivatedRoute, private snackbar: MatSnackBar, private npcService: NpcService) { }
+  constructor(private activeRoute: ActivatedRoute, private snackbar: MatSnackBar, private campaignService: CampaignService) { }
 
   ngOnInit(): void {
     this.activeRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
-    this.data = this.npcService.getById(this.id);
+    this.data = this.campaignService.getById(this.id);
     console.log(this.data);
   }
 
@@ -29,9 +29,8 @@ export class NpcDetailsComponent implements OnInit {
     this.editable = !this.editable;
   }
 
-  saveNpc() {
-
-    this.npcService.updateNpc(this.data).subscribe(
+  saveCampaign() {
+    this.campaignService.updateCampaign(this.data).subscribe(
       succ => {
         this.snackbar.open('Updated ' + this.data.name, 'OK', { duration: 5000 });
       },
@@ -42,4 +41,5 @@ export class NpcDetailsComponent implements OnInit {
     );
     this.toggleEditable();
   }
+
 }

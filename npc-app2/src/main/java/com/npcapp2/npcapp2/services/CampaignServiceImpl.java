@@ -19,7 +19,6 @@ public class CampaignServiceImpl implements CampaignService{
 	public List<Campaign> getAll() {
 		System.out.println("CampaignService reached: getAll");
 		List<Campaign> ret = campaignRepo.findAll();
-		System.out.println(ret.get(0).getCampaignId());
 		return ret;
 	}
 

@@ -1,0 +1,57 @@
+<mat-card>
+    <mat-card-title>{{data.name}}</mat-card-title>
+    <mat-card-subtitle>{{data.startDate}}</mat-card-subtitle>
+    <mat-card-content *ngIf="editable === false">
+        <mat-list>
+            <mat-list-item>Campaign ID: {{data.campaignId}}</mat-list-item>
+            <mat-list-item>Setting: {{data.setting}}</mat-list-item>
+            <mat-list-item>Player Characters: {{data.listPc[0]}}</mat-list-item>
+            <mat-list-item>NPCs: {{data.listNpc[0]}}</mat-list-item>
+            <mat-list-item>Locations: {{data.listLocation[0]}}</mat-list-item>
+            <mat-list-item>Quests: {{data.listQuest[0]}}</mat-list-item>
+            <mat-list-item>Session Notes: {{data.sessionNotes[0]}}</mat-list-item>
+            <mat-list-item>Comments: {{data.comments}}</mat-list-item>
+        </mat-list>
+    </mat-card-content>
+    <mat-card-content *ngIf="editable === true">
+        <mat-form-field appearance="standard">
+            <mat-label>Name:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.name">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Start Date:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.startDate">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Setting:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.setting">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Player Characters:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.listPc[0]">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>NPCs:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.listNpc[0]">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Locations:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.listLocation[0]">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Quests:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.listQuest[0]">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Session Notes:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.sessionNotes[0]">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Comments:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.comments">
+        </mat-form-field><br>
+    </mat-card-content>
+</mat-card>
+<button *ngIf="editable === false" mat-raised-button (click)="toggleEditable()">Edit</button>
+<button *ngIf="editable === true" mat-raised-button (click)="saveCampaign()">Save</button>
+<button mat-raised-button routerLink="/campaign">Back</button>

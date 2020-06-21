@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { CampaignService } from 'src/app/services/campaign.service';
+import { AddCampaignDialogComponent } from './add-campaign-dialog/add-campaign-dialog.component';
 
 @Component({
   selector: 'app-campaign',
@@ -21,7 +22,7 @@ export class CampaignComponent implements OnInit {
   dataSource = new MatTableDataSource<Campaign>();
 
   displayedColumns: string[] = [
-    'name', 'startDate'
+    'name', 'startDate', 'remove'
   ]
 
   constructor(private router: Router, private CampaignSerivce: CampaignService, private snackbar: MatSnackBar, private addDialog: MatDialog) { }
@@ -42,7 +43,7 @@ export class CampaignComponent implements OnInit {
   }
 
   openAddDialog(): void {
-    const dialogRef = this.addDialog.open(CampaignDialogComponent, {
+    const dialogRef = this.addDialog.open(AddCampaignDialogComponent, {
       width: '60%',
       height: '50%'
     });
@@ -52,6 +53,7 @@ export class CampaignComponent implements OnInit {
           succ => {
             this.snackbar.open('Successfully added new campaign.', 'OK', {duration: 2000});
             console.log('Received from server: ', succ);
+            this.dataSource.data.push(succ);
             this.dataSource.data = this.dataSource.data;
             this.CampaignSerivce.saveData(this.dataSource.data);
           },

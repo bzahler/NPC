@@ -41,6 +41,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NpcDetailsComponent } from './components/npc/npc-details/npc-details.component';
 import { HomeComponent } from './components/home/home.component';
 import { CampaignComponent } from './components/campaign/campaign.component';
+import { AddCampaignDialogComponent } from './components/campaign/add-campaign-dialog/add-campaign-dialog.component';
+import { CampaignDetailsComponent } from './components/campaign/campaign-details/campaign-details.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { CampaignComponent } from './components/campaign/campaign.component';
     UpdateDialogComponent,
     NpcDetailsComponent,
     HomeComponent,
-    CampaignComponent
+    CampaignComponent,
+    AddCampaignDialogComponent,
+    CampaignDetailsComponent
   ],
   imports: [
     BrowserModule,

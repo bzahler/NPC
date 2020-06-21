@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>Add a new campaign</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="newCampaign.name">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Start Date</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="newCampaign.startDate">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Setting</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newCampaign.setting">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Player Characters</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newCampaign.listPc[0]">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Npcs</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newCampaign.listNpc[0]">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Locations</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newCampaign.listLocation[0]">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Quests</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newCampaign.listQuest[0]">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Session Notes</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newCampaign.sessionNotes[0]">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Comments</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newCampaign.comments">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button [mat-dialog-close]="newCampaign">OK</button>
+  <button mat-raised-button (click)="onNoClick()">Cancel</button>
+</div>
