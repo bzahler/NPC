@@ -28,7 +28,7 @@ export class NpcComponent implements OnInit {
     'country', 'town','organization', 'remove'
   ];
 
-  constructor(private router: Router,  private NpcService: NpcService, private snackbar: MatSnackBar, private addDialog: MatDialog, private updateDialog: MatDialog) { }
+  constructor(private router: Router,  private NpcService: NpcService, private snackbar: MatSnackBar, private addDialog: MatDialog /**, private updateDialog: MatDialog*/) { }
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
@@ -45,6 +45,7 @@ export class NpcComponent implements OnInit {
     );
   }
 
+  // TODO Add dialog needs to be changed to NPC add dialog to not conflict
   openAddDialog(): void {
     const dialogRef = this.addDialog.open(AddDialogComponent, {
       width: '60%',
@@ -69,6 +70,9 @@ export class NpcComponent implements OnInit {
     });
   }
 
+  /*
+  // Update moved to details page, leaving this for reference. Just in case y'know?
+  // Don't forget to uncomment the constructor too
   openUpdateDialog(index: number): void {
     let record = this.dataSource.data.slice(index, index+1)[0];
 
@@ -97,6 +101,7 @@ export class NpcComponent implements OnInit {
       }
     });
   }
+  */
 
   removeRow(index: number) {
     if (index > -1) {
@@ -118,6 +123,7 @@ export class NpcComponent implements OnInit {
     }
   }
 
+  // provided by angular, don't ask me
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
