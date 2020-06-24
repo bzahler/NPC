@@ -9,4 +9,5 @@ public interface NpcService {
 	Npc addOne(Npc npc);
 	void deleteOne(String npcId);
 	void updateOne(Npc npc);
+	List<Npc> getLocationNpcs(String[] listNpc);
 }
