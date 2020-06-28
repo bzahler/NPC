@@ -43,6 +43,9 @@ import { HomeComponent } from './components/home/home.component';
 import { CampaignComponent } from './components/campaign/campaign.component';
 import { AddCampaignDialogComponent } from './components/campaign/add-campaign-dialog/add-campaign-dialog.component';
 import { CampaignDetailsComponent } from './components/campaign/campaign-details/campaign-details.component';
+import { LocationComponent } from './components/location/location.component';
+import { AddLocationDialogComponent } from './components/location/add-location-dialog/add-location-dialog.component';
+import { LocationDetailsComponent } from './components/location/location-details/location-details.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,10 @@ import { CampaignDetailsComponent } from './components/campaign/campaign-details
     HomeComponent,
     CampaignComponent,
     AddCampaignDialogComponent,
-    CampaignDetailsComponent
+    CampaignDetailsComponent,
+    LocationComponent,
+    AddLocationDialogComponent,
+    LocationDetailsComponent
   ],
   imports: [
     BrowserModule,
