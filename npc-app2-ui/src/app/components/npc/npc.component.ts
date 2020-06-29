@@ -1,14 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatTableDataSource, MatTable } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Npc } from 'src/app/entities/Npc';
 import { NpcService } from 'src/app/services/npc.service';
 import { AddDialogComponent } from './add-dialog/add-dialog.component';
-import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-npc',

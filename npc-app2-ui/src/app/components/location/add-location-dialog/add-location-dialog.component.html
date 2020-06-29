@@ -1,1 +1,23 @@
-<p>add-location-dialog works!</p>
+<h1 mat-dialog-title>Add a new Location</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="newLoc.name">
+  </mat-form-field><br>
+  <mat-form-field class="textareasize" appearance="outline">
+    <mat-label>Summary</mat-label>
+    <textarea matInput cdkFocusInitial class="height" [(ngModel)]="newLoc.summary"></textarea>
+  </mat-form-field>
+  <mat-form-field class="textareasize" appearance="outline">
+    <mat-label>DM Notes</mat-label>
+    <textarea matInput cdkFocusInitial class="height" [(ngModel)]="newLoc.dmDesc"></textarea>
+  </mat-form-field>
+  <mat-form-field class="textareasize" appearance="outline">
+    <mat-label>Player Description</mat-label>
+    <textarea matInput cdkFocusInitial class="height" [(ngModel)]="newLoc.playerDesc"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button [mat-dialog-close]="newLoc">OK</button>
+  <button mat-raised-button (click)="onNoClick()">Cancel</button>
+</div>

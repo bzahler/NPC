@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CampaignComponent } from './components/campaign/campaign.component';
 import { CampaignDetailsComponent } from './components/campaign/campaign-details/campaign-details.component';
 import { LocationComponent } from './components/location/location.component';
+import { LocationDetailsComponent } from './components/location/location-details/location-details.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'location',
     component: LocationComponent
+  },
+  {
+    path:'location-details/:id',
+    component: LocationDetailsComponent
   },
   {
     path: 'home',
