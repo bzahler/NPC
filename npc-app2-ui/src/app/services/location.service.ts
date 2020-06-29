@@ -34,14 +34,14 @@ export class LocationService {
     return result;
   }
 
-  removeLocation(locId: String): Observable<Object> {
+  removeLocation(locId: string): Observable<Object> {
     console.log('Removing location: ', locId);
     const result = this.client.post('http://localhost:8080/loc/delete', locId);
 
     return result;
   }
 
-  getLists(locId: String): Observable<LocationLists> {
+  getLists(locId: string): Observable<LocationLists> {
     console.log('Getting location lists for: ', locId);
     const result = this.client.post<LocationLists>('http://localhost:8080/loc/getLists', locId);
 

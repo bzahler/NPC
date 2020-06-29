@@ -16,7 +16,6 @@ import { AddDialogComponent } from './add-dialog/add-dialog.component';
 })
 export class NpcComponent implements OnInit {
 
-  @ViewChild(MatTable) table: MatTable<Npc>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   dataSource = new MatTableDataSource<Npc>();

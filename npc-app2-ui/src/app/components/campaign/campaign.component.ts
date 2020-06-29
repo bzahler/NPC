@@ -16,7 +16,6 @@ import { AddCampaignDialogComponent } from './add-campaign-dialog/add-campaign-d
 })
 export class CampaignComponent implements OnInit {
 
-  @ViewChild(MatTable) table: MatTable<Campaign>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   dataSource = new MatTableDataSource<Campaign>();

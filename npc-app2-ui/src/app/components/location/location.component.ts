@@ -16,7 +16,6 @@ import { AddLocationDialogComponent } from './add-location-dialog/add-location-d
 })
 export class LocationComponent implements OnInit {
 
-  @ViewChild(MatTable) table: MatTable<Location>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   dataSource = new MatTableDataSource<Location>();
