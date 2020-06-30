@@ -6,6 +6,6 @@ export class Location {
     public summary: string;
     public dmDesc: string;
     public playerDesc: string;
-    public listNpc: Npc[];
-    public listSubLocation: Location[];
+    public listNpc: string[];
+    public listSubLocation: string[];
 }

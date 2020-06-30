@@ -22,17 +22,17 @@ export class LocationDetailsComponent implements OnInit {
   lists: LocationLists;
 
   // Npc Table
-  @ViewChild(MatPaginator, {static: true}) NpcPaginator: MatPaginator; 
-  @ViewChild(MatSort, {static: true}) NpcTableSort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) NpcPaginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) NpcTableSort: MatSort;
   npcDataSource = new MatTableDataSource<Npc>();
   npcDisplayedColumns: string[] = [
     'name', 'race', 'occupation',
-    'country', 'town','organization', 'remove'
+    'country', 'town', 'organization', 'remove'
   ];
 
   // SubLocation Table
-  @ViewChild(MatPaginator, {static: true}) subLocPaginator: MatPaginator; 
-  @ViewChild(MatSort, {static: true}) subLocTableSort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) subLocPaginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) subLocTableSort: MatSort;
   subLocDataSource = new MatTableDataSource<Npc>();
   subLocDisplayedColumns: string[] = [
     'name', 'summary', 'remove'
@@ -73,6 +73,34 @@ export class LocationDetailsComponent implements OnInit {
       }
     );
     this.toggleEditable();
+  }
+
+  removeNpcRow(index: number) {
+    if (index > -1) {
+      console.log(index);
+      // find which npc to remove
+      let npc = this.npcDataSource.data.slice(index, index + 1)[0];
+      console.log(npc);
+      let npcId = npc.npcId;
+
+      // remove it from the object and save it
+      let npcIndex = this.data.listNpc.findIndex(id => id === npcId);
+      this.data.listNpc.splice(npcIndex, npcIndex + 1);
+      this.locationService.updateLocation(this.data).subscribe(
+        succ => {
+          this.snackbar.open('Updated ' + this.data.name, 'OK', { duration: 5000 });
+          // remove it from the datasource
+          this.npcDataSource.data.splice(index, index + 1);
+          this.npcDataSource.data = this.npcDataSource.data;
+        },
+        err => {
+          this.snackbar.open('Failed to update ' + this.data.name +
+            '. You should refresh the page to prevent data inconsistency.',
+            'OK', { duration: 5000 });
+        }
+      );
+
+    }
   }
 
 }
