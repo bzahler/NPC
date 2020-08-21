@@ -21,8 +21,25 @@ export class NpcDetailsComponent implements OnInit {
     this.activeRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
-    this.data = this.npcService.getById(this.id);
-    console.log(this.data);
+
+    // check if the service has the data or not
+    let checkService = this.npcService.getAllData();
+    // if it doesn't, update the service before getting the data
+    if (!checkService) {
+      this.npcService.getAllNpcs().subscribe(
+        succ => {
+          this.npcService.saveData(succ);
+          this.data = this.npcService.getById(this.id);
+        },
+        err => {
+          this.snackbar.open('Could not retrieve npcs from db.', 'OK', { duration: 5000 });
+        }
+      );
+      // else just get the data
+    } else {
+      this.data = this.npcService.getById(this.id);
+    }
+
   }
 
   toggleEditable() {

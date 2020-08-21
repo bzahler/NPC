@@ -21,8 +21,26 @@ export class CampaignDetailsComponent implements OnInit {
     this.activeRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
-    this.data = this.campaignService.getById(this.id);
-    console.log(this.data);
+
+    // check if the service has the data or not
+    let checkService = this.campaignService.getAllData();
+    // if it doesn't, update the service before getting the data
+    if (!checkService) {
+      this.campaignService.getAllCampaigns().subscribe(
+        succ => {
+          this.campaignService.saveData(succ);
+          this.data = this.campaignService.getById(this.id);
+        },
+        err => {
+          this.snackbar.open('Could not retrieve locations from db.', 'OK', { duration: 5000 });
+        }
+      );
+      // else just get the data
+    } else {
+      this.data = this.campaignService.getById(this.id);
+    }
+    
+
   }
 
   toggleEditable() {

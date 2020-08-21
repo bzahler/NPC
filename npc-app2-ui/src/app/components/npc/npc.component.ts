@@ -23,7 +23,7 @@ export class NpcComponent implements OnInit {
   // Determines which columns are displayed on the table
   displayedColumns: string[] = [
     'name', 'race', 'occupation',
-    'country', 'town','organization', 'remove'
+    'country', 'town','organization', 'details', 'remove'
   ];
 
   constructor(private router: Router,  private NpcService: NpcService, private snackbar: MatSnackBar, private addDialog: MatDialog /**, private updateDialog: MatDialog*/) { }
@@ -125,5 +125,9 @@ export class NpcComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  detailsRouter(path, data) {
+    this.router.navigate([path, data]);
   }
 }

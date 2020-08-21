@@ -21,7 +21,7 @@ export class LocationComponent implements OnInit {
   dataSource = new MatTableDataSource<Location>();
 
   displayedColumns: string[] = [
-    'name', 'summary', 'remove'
+    'name', 'summary', 'details', 'remove'
   ];
 
   constructor(private router: Router, private LocationService: LocationService, private snackbar: MatSnackBar, private addDialog: MatDialog) { }
@@ -87,6 +87,10 @@ export class LocationComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  detailsRouter(path, data) {
+    this.router.navigate([path, data]);
   }
 
 }

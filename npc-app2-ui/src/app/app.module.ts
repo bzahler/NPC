@@ -46,6 +46,8 @@ import { CampaignDetailsComponent } from './components/campaign/campaign-details
 import { LocationComponent } from './components/location/location.component';
 import { AddLocationDialogComponent } from './components/location/add-location-dialog/add-location-dialog.component';
 import { LocationDetailsComponent } from './components/location/location-details/location-details.component';
+import { AddLocationNpcComponent } from './components/location/location-details/add-location-npc/add-location-npc.component';
+import { AddLocationSublocComponent } from './components/location/location-details/add-location-subloc/add-location-subloc.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { LocationDetailsComponent } from './components/location/location-details
     CampaignDetailsComponent,
     LocationComponent,
     AddLocationDialogComponent,
-    LocationDetailsComponent
+    LocationDetailsComponent,
+    AddLocationNpcComponent,
+    AddLocationSublocComponent
   ],
   imports: [
     BrowserModule,
