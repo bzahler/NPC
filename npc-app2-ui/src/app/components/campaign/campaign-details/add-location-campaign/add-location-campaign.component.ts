@@ -4,16 +4,16 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { AddCampaignDialogComponent } from '../../add-campaign-dialog/add-campaign-dialog.component';
 import { Location } from 'src/app/entities/Location';
 import { LocationService } from 'src/app/services/location.service';
-import { AddLocationDialogComponent } from '../../add-location-dialog/add-location-dialog.component';
 
 @Component({
-  selector: 'app-add-location-subloc',
-  templateUrl: './add-location-subloc.component.html',
-  styleUrls: ['./add-location-subloc.component.css']
+  selector: 'app-add-location-campaign',
+  templateUrl: './add-location-campaign.component.html',
+  styleUrls: ['./add-location-campaign.component.css']
 })
-export class AddLocationSublocComponent implements OnInit {
+export class AddLocationCampaignComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -22,10 +22,10 @@ export class AddLocationSublocComponent implements OnInit {
   displayedColumns: string[] = [
     'name', 'summary', 'select'
   ];
-  
-  constructor(public dialogRef: MatDialogRef<AddLocationDialogComponent>, public locationService: LocationService, private snackbar: MatSnackBar) { }
 
-  ngOnInit() {
+  constructor(public dialogRef: MatDialogRef<AddCampaignDialogComponent>, public locationService: LocationService, private snackbar: MatSnackBar) { }
+
+  ngOnInit(): void {
     this.dataSource.data = this.locationService.getAllData();
     if(!this.dataSource.data) {
       this.locationService.getAllLocations().subscribe(

@@ -11,4 +11,5 @@ public interface LocationService {
 	void deleteOne(String locId);
 	void updateOne(Location loc);
 	LocationLists getListsById(String locId);
+	List<Location> getSubLocList(String[] listSubLoc);
 }

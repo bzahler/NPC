@@ -1,5 +1,6 @@
 package com.npcapp2.npcapp2.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +17,7 @@ public class LocationServiceImpl implements LocationService {
 
 	@Autowired
 	LocationRepo locRepo;
-	
+
 	@Autowired
 	NpcService npcServ;
 
@@ -58,26 +59,31 @@ public class LocationServiceImpl implements LocationService {
 			LocationLists locLists = new LocationLists();
 			// the double .get() is a bit weird but I imagine the overhead is irrelevant
 			locLists.setLocData(findResult.get());
-			String[] stringSubLocs = findResult.get().getListSubLocation();
 
-			// loop through listed sublocations
-			for (int i = 0; i < stringSubLocs.length; i++) {
-				// convert id to object id
-				id = new ObjectId(stringSubLocs[i]);
-				Optional<Location> temp = locRepo.findById(id);
-				// have to deal with the new optional crap
-				if (temp.isPresent()) {
-					locLists.getSubLocations().add(temp.get());
-				}
-			}
+			// get sub locations
+			locLists.setSubLocations(getSubLocList(findResult.get().getListSubLocation()));
 
 			// get npcs
-			locLists.setNpcList(npcServ.getLocationNpcs(findResult.get().getListNpc()));
+			locLists.setNpcList(npcServ.getNpcList(findResult.get().getListNpc()));
 
 			return locLists;
 		} else {
-			// should return some sort of error? Since this means the id on the front end didn't exist in the backend somehow
+			// should return some sort of error? Since this means the id on the front end
+			// didn't exist in the backend somehow
 			return null;
 		}
+	}
+
+	@Override
+	public List<Location> getSubLocList(String[] listSubLoc) {
+		List<Location> subLocs = new ArrayList<>();
+		for (int i = 0; i < listSubLoc.length; i++) {
+			ObjectId id = new ObjectId(listSubLoc[i]);
+			Optional<Location> temp = locRepo.findById(id);
+			if(temp.isPresent()) {
+				subLocs.add(temp.get());
+			}
+		}
+		return subLocs;
 	}
 }

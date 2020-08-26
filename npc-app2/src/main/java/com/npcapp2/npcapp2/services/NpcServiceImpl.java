@@ -29,7 +29,7 @@ public class NpcServiceImpl implements NpcService {
 		System.out.println("NpcService reached: addOne");
 		return npcRepo.save(npc);
 	}
-	
+
 	@Override
 	public void updateOne(Npc npc) {
 		System.out.println("NpcService reached: updateOne");
@@ -40,20 +40,20 @@ public class NpcServiceImpl implements NpcService {
 	public void deleteOne(String npcId) {
 		System.out.println("NpcService reached: deleteOne");
 		ObjectId id = new ObjectId(npcId);
-		npcRepo.deleteById(id);	
+		npcRepo.deleteById(id);
 	}
 
 	@Override
-	public List<Npc> getLocationNpcs(String[] listNpc) {
+	public List<Npc> getNpcList(String[] listNpc) {
 		List<Npc> locationNpcs = new ArrayList<>();
 		for (int i = 0; i < listNpc.length; i++) {
 			ObjectId id = new ObjectId(listNpc[i]);
 			Optional<Npc> temp = npcRepo.findById(id);
-			if(temp.isPresent()) {
+			if (temp.isPresent()) {
 				locationNpcs.add(temp.get());
 			}
 		}
 		return locationNpcs;
-		
+
 	}
 }

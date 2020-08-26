@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.npcapp2.npcapp2.entities.Campaign;
+import com.npcapp2.npcapp2.entities.CampaignLists;
 import com.npcapp2.npcapp2.services.CampaignService;
 
 @RestController
@@ -50,5 +51,17 @@ public class CampaignController {
 		System.out.println(campaignId);
 		campaignServ.deleteOne(campaignId);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@PostMapping("/getLists")
+	public ResponseEntity<CampaignLists> getListsById(@RequestBody String campaignId) {
+		System.out.println("LocationController reached. getListsById()");
+		System.out.println(campaignId);
+		CampaignLists check = campaignServ.getListsById(campaignId);
+		if (check != null) {
+			return new ResponseEntity<>(check, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
 	}
 }

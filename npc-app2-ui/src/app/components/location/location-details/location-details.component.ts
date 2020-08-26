@@ -72,6 +72,7 @@ export class LocationDetailsComponent implements OnInit {
         this.lists = succ;
         console.log(this.lists);
         this.npcDataSource.data = this.lists.npcList;
+        this.subLocDataSource.data = this.lists.subLocations;
       },
       err => {
         this.snackbar.open('Failed to retrieve sub-lists', 'OK', { duration: 5000 });
@@ -147,7 +148,6 @@ export class LocationDetailsComponent implements OnInit {
             'OK', { duration: 5000 });
         }
       );
-
     }
   }
 
