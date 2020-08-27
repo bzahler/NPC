@@ -19,7 +19,6 @@ public class PlayerCharServiceImpl implements PlayerCharService {
 		public List<PlayerCharacter> getAll() {
 			System.out.println("PlayerCharacterService reached: getAll");
 			List<PlayerCharacter> ret = pcRepo.findAll();
-			System.out.println(ret.get(0).getPlayerId());
 			return ret;
 		}
 

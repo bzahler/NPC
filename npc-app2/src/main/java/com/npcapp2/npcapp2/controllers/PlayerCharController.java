@@ -16,7 +16,7 @@ import com.npcapp2.npcapp2.entities.PlayerCharacter;
 import com.npcapp2.npcapp2.services.PlayerCharService;
 
 @RestController
-@RequestMapping("pc")
+@RequestMapping("playerChar")
 @CrossOrigin
 public class PlayerCharController {
 

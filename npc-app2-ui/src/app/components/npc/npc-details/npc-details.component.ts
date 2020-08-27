@@ -57,6 +57,6 @@ export class NpcDetailsComponent implements OnInit {
         // Ideally this would undo your edits
       }
     );
-    this.toggleEditable();
+    this.editable = false;
   }
 }

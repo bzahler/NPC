@@ -48,7 +48,7 @@ export class LocationService {
     return result;
   }
 
-  getbyId(id: string) {
+  getById(id: string) {
     return this.data.find(loc => loc.locationId === id);
   }
 

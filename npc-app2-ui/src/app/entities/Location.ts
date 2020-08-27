@@ -1,5 +1,3 @@
-import { Npc } from './Npc';
-
 export class Location {
     public locationId: string;
     public name: string;

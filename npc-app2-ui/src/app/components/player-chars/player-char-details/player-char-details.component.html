@@ -1,0 +1,71 @@
+<mat-card>
+    <mat-card-title>{{data.charName}}</mat-card-title>
+    <mat-card-subtitle>{{data.charRace}} {{data.charClass}}</mat-card-subtitle>
+    <!-- <img *ngIf="data.imgLink != null" src={{data.imgLink}} height="200" width="200"> -->
+    <mat-card-content *ngIf="editable === false">
+        <mat-list>
+            <mat-list-item>Player ID: {{data.playerId}}</mat-list-item>
+            <mat-list-item>Player Name: {{data.playerName}}</mat-list-item>
+            <mat-list-item>PHB Background: {{data.phbBackground}}</mat-list-item>
+            <mat-list-item>Physical Description: {{data.physicalDesc}}</mat-list-item>
+            <mat-list-item>Peronsality Description: {{data.personalityDesc}}</mat-list-item>
+            <mat-list-item>Player Background: {{data.charBackground}}</mat-list-item>
+            <mat-list-item>Level: {{data.charLevel}}</mat-list-item>
+            <mat-list-item>Health: {{data.charHealth}}</mat-list-item>
+            <mat-list-item>Armor Class: {{data.charArmorClass}}</mat-list-item>
+        </mat-list>
+    </mat-card-content>
+    <mat-card-content *ngIf="editable === true">
+        <mat-form-field appearance="standard">
+            <mat-label>Character Name:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.charName">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Race:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.charRace">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Class:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.charClass">
+        </mat-form-field><br>
+        <!-- <mat-form-field appearance="standard">
+            <mat-label>Image URL:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.imgLink">
+        </mat-form-field><br> -->
+        <mat-form-field appearance="standard">
+            <mat-label>Player Name:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.playerName">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>PHB Background:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.phbBackground">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Physical Description:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.physicalDesc">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Personality Description:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.personalityDesc">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Player Background:</mat-label>
+            <textarea matInput cdkFocusInitial [(ngModel)]="data.charBackground"></textarea>
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Level:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.charLevel">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Health:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.charHealth">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Armor Class:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.charArmorClass">
+        </mat-form-field><br>
+    </mat-card-content>
+</mat-card>
+<button *ngIf="editable === false" mat-raised-button (click)="toggleEditable()">Edit</button>
+<button *ngIf="editable === true" mat-raised-button (click)="saveNpc()">Save</button>
+<button mat-raised-button routerLink="/playerChar">Back</button>

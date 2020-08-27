@@ -7,6 +7,8 @@ import { CampaignComponent } from './components/campaign/campaign.component';
 import { CampaignDetailsComponent } from './components/campaign/campaign-details/campaign-details.component';
 import { LocationComponent } from './components/location/location.component';
 import { LocationDetailsComponent } from './components/location/location-details/location-details.component';
+import { PlayerCharsComponent } from './components/player-chars/player-chars.component';
+import { PlayerCharDetailsComponent } from './components/player-chars/player-char-details/player-char-details.component';
 
 const routes: Routes = [
   {
@@ -32,6 +34,14 @@ const routes: Routes = [
   {
     path:'location-details/:id',
     component: LocationDetailsComponent
+  },
+  {
+    path: 'playerChar',
+    component: PlayerCharsComponent
+  },
+  {
+    path:'player-char-details/:id',
+    component: PlayerCharDetailsComponent
   },
   {
     path: 'home',

@@ -56,7 +56,7 @@ export class LocationDetailsComponent implements OnInit {
       this.locationService.getAllLocations().subscribe(
         succ => {
           this.locationService.saveData(succ);
-          this.data = this.locationService.getbyId(this.id);
+          this.data = this.locationService.getById(this.id);
         },
         err => {
           this.snackbar.open('Could not retrieve locations from db.', 'OK', { duration: 5000 });
@@ -64,7 +64,7 @@ export class LocationDetailsComponent implements OnInit {
       );
       // else just get the data
     } else {
-      this.data = this.locationService.getbyId(this.id);
+      this.data = this.locationService.getById(this.id);
     }
 
     this.locationService.getLists(this.id).subscribe(
