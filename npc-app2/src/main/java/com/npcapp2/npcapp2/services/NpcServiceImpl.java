@@ -45,15 +45,15 @@ public class NpcServiceImpl implements NpcService {
 
 	@Override
 	public List<Npc> getNpcList(String[] listNpc) {
-		List<Npc> locationNpcs = new ArrayList<>();
+		List<Npc> subNpcs = new ArrayList<>();
 		for (int i = 0; i < listNpc.length; i++) {
 			ObjectId id = new ObjectId(listNpc[i]);
 			Optional<Npc> temp = npcRepo.findById(id);
 			if (temp.isPresent()) {
-				locationNpcs.add(temp.get());
+				subNpcs.add(temp.get());
 			}
 		}
-		return locationNpcs;
+		return subNpcs;
 
 	}
 }

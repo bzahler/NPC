@@ -16,12 +16,12 @@ public class CampaignServiceImpl implements CampaignService{
 
 	@Autowired
 	CampaignRepo campaignRepo;
-	
 	@Autowired
 	NpcService npcServ;
-	
 	@Autowired
 	LocationService locServ;
+	@Autowired
+	PlayerCharService pcServ;
 
 	@Override
 	public List<Campaign> getAll() {
@@ -44,14 +44,15 @@ public class CampaignServiceImpl implements CampaignService{
 
 	@Override
 	public void deleteOne(String campaignId) {
-		System.out.println("NpcService reached: deleteOne");
+		System.out.println("CampaignService reached: deleteOne");
 		ObjectId id = new ObjectId(campaignId);
 		campaignRepo.deleteById(id);	
 	}
 	
 	@Override
 	public CampaignLists getListsById(String campId) {
-		System.out.println("CampaignService reached: getById");
+		System.out.println("CampaignService reached: getListsById");
+		System.out.println(campId);
 		ObjectId id = new ObjectId(campId);
 		Optional<Campaign> findResult = campaignRepo.findById(id);
 		
@@ -62,7 +63,11 @@ public class CampaignServiceImpl implements CampaignService{
 			// get sublocations from locationService
 			campLists.setSubLocations(locServ.getSubLocList(findResult.get().getListLocation()));
 			
+			// get npcs from npcService
 			campLists.setNpcList(npcServ.getNpcList(findResult.get().getListNpc()));
+			
+			// get PCs from pcService
+			campLists.setPcList(pcServ.getPlayerCharList(findResult.get().getListPc()));
 			
 			return campLists;
 		} else {

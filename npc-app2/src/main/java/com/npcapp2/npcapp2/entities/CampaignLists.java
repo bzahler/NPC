@@ -12,6 +12,7 @@ public class CampaignLists {
 	private Campaign campaignData;
 	private List<Npc> npcList;
 	private List<Location> subLocations;
+	private List<PlayerCharacter> pcList;
 	
 	public Campaign getCampaignData() {
 		return campaignData;
@@ -31,12 +32,20 @@ public class CampaignLists {
 	public void setSubLocations(List<Location> subLocations) {
 		this.subLocations = subLocations;
 	}
+	public List<PlayerCharacter> getPcList() {
+		return pcList;
+	}
+	public void setPcList(List<PlayerCharacter> pcList) {
+		this.pcList = pcList;
+	}
 	
-	public CampaignLists(Campaign campaignData, List<Npc> npcList, List<Location> subLocations) {
+	public CampaignLists(Campaign campaignData, List<Npc> npcList, List<Location> subLocations,
+			List<PlayerCharacter> pcList) {
 		super();
 		this.campaignData = campaignData;
 		this.npcList = npcList;
 		this.subLocations = subLocations;
+		this.pcList = pcList;
 	}
 	
 	public CampaignLists() {
@@ -47,7 +56,6 @@ public class CampaignLists {
 	@Override
 	public String toString() {
 		return "CampaignLists [campaignData=" + campaignData + ", npcList=" + npcList + ", subLocations=" + subLocations
-				+ "]";
+				+ ", pcList=" + pcList + "]";
 	}
-
 }

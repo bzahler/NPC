@@ -12,4 +12,5 @@ export class PlayerCharacter {
 	public charLevel: string;
 	public charHealth: string;
 	public charArmorClass: string;
+	public imgLink: string;
 }

@@ -12,6 +12,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Location } from 'src/app/entities/Location';
 import { AddNpcCampaignComponent } from './add-npc-campaign/add-npc-campaign.component';
 import { AddLocationCampaignComponent } from './add-location-campaign/add-location-campaign.component';
+import { PlayerCharacter } from 'src/app/entities/PlayerCharacter';
+import { AddPlayerCharCampaignComponent } from './add-player-char-campaign/add-player-char-campaign.component';
 
 @Component({
   selector: 'app-campaign-details',
@@ -43,7 +45,16 @@ export class CampaignDetailsComponent implements OnInit {
     'name', 'summary', 'details', 'remove'
   ];
 
-  constructor(private activeRoute: ActivatedRoute, private snackbar: MatSnackBar, private campaignService: CampaignService, private addNpcDialog: MatDialog, private addSubLocDialog: MatDialog, private router: Router) { }
+  // Player Character table
+  @ViewChild(MatPaginator, { static: true }) pcPaginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) pcTableSort: MatSort;
+  pcDataSource = new MatTableDataSource<PlayerCharacter>();
+
+  pcDisplayedColumns: string[] = [
+    'charName', 'playerName', 'charRace', 'charClass', 'phbBackground', 'details', 'remove'
+  ];
+
+  constructor(private activeRoute: ActivatedRoute, private snackbar: MatSnackBar, private campaignService: CampaignService, private addNpcDialog: MatDialog, private addSubLocDialog: MatDialog, private addPCDialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
     this.activeRoute.paramMap.subscribe(params => {
@@ -74,6 +85,8 @@ export class CampaignDetailsComponent implements OnInit {
         console.log(this.lists);
         this.npcDataSource.data = this.lists.npcList;
         this.subLocDataSource.data = this.lists.subLocations;
+        this.pcDataSource.data = this.lists.pcList;
+        
       },
       err => {
         this.snackbar.open('Failed to retrieve sub-lists', 'OK', { duration: 5000 });
@@ -152,6 +165,32 @@ export class CampaignDetailsComponent implements OnInit {
     }
   }
 
+  removePCRow(index: number) {
+    if (index > -1) {
+      console.log(index);
+      let pc = this.pcDataSource.data.slice(index, index + 1)[0];
+      console.log(pc);
+      let pcId = pc.playerId;
+
+      // remove it from the object and save it
+      let pcIndex = this.data.listPc.findIndex(id => id === pcId);
+      this.data.listPc.splice(pcIndex, pcIndex + 1);
+      this.campaignService.updateCampaign(this.data).subscribe(
+        succ => {
+          this.snackbar.open('Updated ' + this.data.name, 'OK', { duration: 5000 });
+          // remove it from the datasource
+          this.pcDataSource.data.splice(index, index + 1);
+          this.pcDataSource.data = this.pcDataSource.data;
+        },
+        err => {
+          this.snackbar.open('Failed to update ' + this.data.name +
+            '. You should refresh the page to prevent data inconsistency.',
+            'OK', { duration: 5000 });
+        }
+      );
+    }
+  }
+
   openAddNpcDialog(): void {
     const dialogRef = this.addNpcDialog.open(AddNpcCampaignComponent, {
       width: '90%',
@@ -178,6 +217,21 @@ export class CampaignDetailsComponent implements OnInit {
         this.saveCampaign();
         this.subLocDataSource.data.push(dialogReturn);
         this.subLocDataSource.data = this.subLocDataSource.data;
+      }
+    });
+  }
+
+  openAddPCDialog(): void {
+    const dialogRef = this.addPCDialog.open(AddPlayerCharCampaignComponent, {
+      width: '90%',
+      height: '90%'
+    });
+    dialogRef.afterClosed().subscribe(dialogReturn => {
+      if (dialogReturn) {
+        this.data.listPc.push(dialogReturn.playerId);
+        this.saveCampaign();
+        this.pcDataSource.data.push(dialogReturn);
+        this.pcDataSource.data = this.pcDataSource.data;
       }
     });
   }

@@ -53,6 +53,7 @@ import { AddNpcCampaignComponent } from './components/campaign/campaign-details/
 import { PlayerCharsComponent } from './components/player-chars/player-chars.component';
 import { AddPlayerCharDialogComponent } from './components/player-chars/add-player-char-dialog/add-player-char-dialog.component';
 import { PlayerCharDetailsComponent } from './components/player-chars/player-char-details/player-char-details.component';
+import { AddPlayerCharCampaignComponent } from './components/campaign/campaign-details/add-player-char-campaign/add-player-char-campaign.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { PlayerCharDetailsComponent } from './components/player-chars/player-cha
     AddNpcCampaignComponent,
     PlayerCharsComponent,
     AddPlayerCharDialogComponent,
-    PlayerCharDetailsComponent
+    PlayerCharDetailsComponent,
+    AddPlayerCharCampaignComponent
   ],
   imports: [
     BrowserModule,

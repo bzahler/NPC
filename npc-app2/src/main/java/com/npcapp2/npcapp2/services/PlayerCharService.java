@@ -9,4 +9,5 @@ public interface PlayerCharService {
 	PlayerCharacter addOne(PlayerCharacter pc);
 	void deleteOne(String pcId);
 	void updateOne(PlayerCharacter pc);
+	List<PlayerCharacter> getPlayerCharList(String[] listPC);
 }

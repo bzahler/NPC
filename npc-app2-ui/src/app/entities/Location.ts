@@ -6,4 +6,5 @@ export class Location {
     public playerDesc: string;
     public listNpc: string[];
     public listSubLocation: string[];
+    public imgLink: string;
 }

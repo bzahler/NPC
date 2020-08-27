@@ -1,7 +1,7 @@
 <mat-card>
     <mat-card-title>{{data.charName}}</mat-card-title>
     <mat-card-subtitle>{{data.charRace}} {{data.charClass}}</mat-card-subtitle>
-    <!-- <img *ngIf="data.imgLink != null" src={{data.imgLink}} height="200" width="200"> -->
+    <img *ngIf="data.imgLink != null" src={{data.imgLink}} height="200" width="200">
     <mat-card-content *ngIf="editable === false">
         <mat-list>
             <mat-list-item>Player ID: {{data.playerId}}</mat-list-item>
@@ -28,10 +28,10 @@
             <mat-label>Class:</mat-label>
             <input matInput cdkFocusInitial [(ngModel)]="data.charClass">
         </mat-form-field><br>
-        <!-- <mat-form-field appearance="standard">
+        <mat-form-field appearance="standard">
             <mat-label>Image URL:</mat-label>
             <input matInput cdkFocusInitial [(ngModel)]="data.imgLink">
-        </mat-form-field><br> -->
+        </mat-form-field><br>
         <mat-form-field appearance="standard">
             <mat-label>Player Name:</mat-label>
             <input matInput cdkFocusInitial [(ngModel)]="data.playerName">

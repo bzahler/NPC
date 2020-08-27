@@ -1,0 +1,50 @@
+<mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+</mat-form-field>
+
+<div>
+    <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8 table-width">
+
+        <ng-container matColumnDef="charName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.charName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="playerName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Player Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.playerName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="charRace">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Char Race </th>
+            <td mat-cell *matCellDef="let element"> {{element.charRace}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="charClass">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Char Class </th>
+            <td mat-cell *matCellDef="let element"> {{element.charClass}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="phbBackground">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> PHB Background </th>
+            <td mat-cell *matCellDef="let element"> {{element.phbBackground}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef> Select </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-icon (click)="selectRow(dataSource.filteredData.indexOf(element))">play_circle_outline</mat-icon>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button [mat-dialog-close]="returnPC">OK</button>
+    <button mat-raised-button (click)="onNoClick()">Cancel</button>
+</div>

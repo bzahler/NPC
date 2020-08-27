@@ -28,6 +28,7 @@ public class Npc {
 	private String organization;
 	private String comments;
 	private String imgLink;
+	
 	public String getNpcId() {
 		return npcId;
 	}

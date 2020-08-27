@@ -9,4 +9,5 @@ export class Campaign {
 	public listQuest: string[];
 	public sessionNotes: string[];
 	public comments: string;
+	public imgLink: string;
 }

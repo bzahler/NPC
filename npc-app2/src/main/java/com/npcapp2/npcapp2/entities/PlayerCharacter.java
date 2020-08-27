@@ -26,6 +26,7 @@ public class PlayerCharacter {
 	private String charLevel;
 	private String charHealth;
 	private String charArmorClass;
+	private String imgLink;
 	
 	public String getPlayerId() {
 		return playerId;
@@ -105,9 +106,19 @@ public class PlayerCharacter {
 	public void setCharArmorClass(String charArmorClass) {
 		this.charArmorClass = charArmorClass;
 	}
+	public String getImgLink() {
+		return imgLink;
+	}
+	public void setImgLink(String imgLink) {
+		this.imgLink = imgLink;
+	}
+	public PlayerCharacter() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public PlayerCharacter(String playerId, String charName, String playerName, String charRace, String charClass,
 			String phbBackground, String physicalDesc, String personalityDesc, String charBackground, String dmNotes,
-			String charLevel, String charHealth, String charArmorClass) {
+			String charLevel, String charHealth, String charArmorClass, String imgLink) {
 		super();
 		this.playerId = playerId;
 		this.charName = charName;
@@ -122,10 +133,7 @@ public class PlayerCharacter {
 		this.charLevel = charLevel;
 		this.charHealth = charHealth;
 		this.charArmorClass = charArmorClass;
-	}
-	public PlayerCharacter() {
-		super();
-		// TODO Auto-generated constructor stub
+		this.imgLink = imgLink;
 	}
 	@Override
 	public String toString() {
@@ -133,6 +141,6 @@ public class PlayerCharacter {
 				+ ", charRace=" + charRace + ", charClass=" + charClass + ", phbBackground=" + phbBackground
 				+ ", physicalDesc=" + physicalDesc + ", personalityDesc=" + personalityDesc + ", charBackground="
 				+ charBackground + ", dmNotes=" + dmNotes + ", charLevel=" + charLevel + ", charHealth=" + charHealth
-				+ ", charArmorClass=" + charArmorClass + "]";
-	}	
+				+ ", charArmorClass=" + charArmorClass + ", imgLink=" + imgLink + "]";
+	}
 }
