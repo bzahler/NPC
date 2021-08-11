@@ -9,10 +9,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class AddCampaignDialogComponent implements OnInit{
 
-  // newCampaign = new Campaign()
-
-  // Quick fix for the fact that I don't have functionality for the arrays,
-  // but the backend is expecting it. Check the html too
   newCampaign = new Campaign();
 
   constructor(public dialogRef: MatDialogRef<AddCampaignDialogComponent>) { }
