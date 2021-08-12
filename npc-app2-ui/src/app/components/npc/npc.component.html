@@ -1,97 +1,22 @@
-<mat-form-field>
+<button mat-raised-button (click)="openAddDialog()">Add</button>
+
+<mat-form-field class="filter-spacing">
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
 </mat-form-field>
 
-<div>
-  <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8 table-width">
+<mat-divider></mat-divider>
 
-    <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- Defines a column -->
-    <!-- <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> Id </th>
-    <td mat-cell *matCellDef="let element"> {{element.npcId}} </td>
-  </ng-container> -->
-
-    <!-- Need one for each column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="race">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Race </th>
-      <td mat-cell *matCellDef="let element"> {{element.race}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="occupation">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Occupation </th>
-      <td mat-cell *matCellDef="let element"> {{element.occupation}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="country">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Country </th>
-      <td mat-cell *matCellDef="let element"> {{element.country}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="town">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Town </th>
-      <td mat-cell *matCellDef="let element"> {{element.town}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="physicalDesc">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> PhysicalDesc </th>
-      <td mat-cell *matCellDef="let element"> {{element.physicalDesc}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="voiceDesc">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> VoiceDesc </th>
-      <td mat-cell *matCellDef="let element"> {{element.voiceDesc}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="personalityDesc">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Personality </th>
-      <td mat-cell *matCellDef="let element"> {{element.personalityDesc}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="organization">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Organization </th>
-      <td mat-cell *matCellDef="let element"> {{element.organization}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="comments">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Comments </th>
-      <td mat-cell *matCellDef="let element"> {{element.comments}} </td>
-    </ng-container>
-
-    <!-- Update functinoality was moved to npc-details page -->
-    <!-- <ng-container matColumnDef="update">
-      <th mat-header-cell *matHeaderCellDef> Update </th>
-      <td mat-cell *matCellDef="let element">
-        <mat-icon (click)="openUpdateDialog(dataSource.filteredData.indexOf(element))">edit</mat-icon>
-      </td>
-    </ng-container> -->
-
-    <ng-container matColumnDef="details">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Details </th>
-      <td mat-cell *matCellDef="let element">
-        <mat-icon (click)="detailsRouter('/npc-details', element.npcId)">description</mat-icon>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="remove">
-      <th mat-header-cell *matHeaderCellDef> Remove </th>
-      <td mat-cell *matCellDef="let element">
-        <mat-icon (click)="removeRow(dataSource.filteredData.indexOf(element))">close</mat-icon>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-
-  <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+<div fxLayout="row wrap" fxLayoutGap="16px grid" class="content-width">
+  <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let npc of activeNpcList; index as i;">
+    <mat-card class="card-size">
+      <img *ngIf="activeNpcList[i].imgLink === null" class="img-size" src="../../../assets/Generic-Person.png">
+      <img *ngIf="activeNpcList[i].imgLink != null" class="img-size" src={{activeNpcList[i].imgLink}}>
+      <br>
+      <mat-card-title>{{activeNpcList[i].name}}</mat-card-title>
+      <mat-card-subtitle>
+        {{activeNpcList[i].race}},&nbsp;{{activeNpcList[i].occupation}}
+      </mat-card-subtitle>
+    </mat-card>
+  </div>
 </div>
-<button mat-raised-button (click)="openAddDialog()">Add</button>

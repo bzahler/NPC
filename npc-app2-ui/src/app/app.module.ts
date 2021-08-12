@@ -54,6 +54,7 @@ import { PlayerCharsComponent } from './components/player-chars/player-chars.com
 import { AddPlayerCharDialogComponent } from './components/player-chars/add-player-char-dialog/add-player-char-dialog.component';
 import { PlayerCharDetailsComponent } from './components/player-chars/player-char-details/player-char-details.component';
 import { AddPlayerCharCampaignComponent } from './components/campaign/campaign-details/add-player-char-campaign/add-player-char-campaign.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { AddPlayerCharCampaignComponent } from './components/campaign/campaign-d
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     MatSliderModule,
     HttpClientModule,
     MatToolbarModule,
