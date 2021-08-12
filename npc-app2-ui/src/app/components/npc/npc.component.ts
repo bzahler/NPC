@@ -63,20 +63,22 @@ export class NpcComponent implements OnInit {
   applyFilter(event: Event) {
     // filterValue = whatever is in the textbox
     const filterValue = (event.target as HTMLInputElement).value;
+    this.activeNpcList = [];
 
-    // stringify each Npc
-    let stringifiedNpcList: string[] = [];
-    this.baseNpcList.forEach(ele => {
-      stringifiedNpcList.push(JSON.stringify(ele));
+    // concatenate the values of an object and lowercase them (and the filtervalue)
+    this.baseNpcList.forEach( ele => {
+      let values = Object.values(ele);
+      let stringified = values.join().toLowerCase();
+      if (stringified.includes(filterValue.toLowerCase())) {
+        this.activeNpcList.push(ele);
+      }
     });
-    console.log(stringifiedNpcList);
-    let filtered = stringifiedNpcList.filter(ele =>
-      ele.includes(filterValue)
-    );
 
-    filtered.forEach(ele => {
-      this.activeNpcList.push(JSON.parse(ele));
-    });
+    // then check if it exists within that and return true.
+  }
+
+  test(): void {
+    console.log('working');
   }
 
   detailsRouter(path, data) {
