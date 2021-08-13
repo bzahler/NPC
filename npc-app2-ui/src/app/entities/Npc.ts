@@ -1,7 +1,7 @@
 export class Npc {
     public npcId: string;
     public name: string;
-    public campaign: number;
+    public campaign: string;
     public race: string;
     public occupation: string;
     public country: string;

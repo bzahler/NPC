@@ -15,6 +15,7 @@ export class NpcComponent implements OnInit {
 
   baseNpcList: Npc[] = [];
   activeNpcList: Npc[] = [];
+  cardColor: string = 'rgba(128, 128, 128, 0.315)';
 
   constructor(private router: Router, private NpcService: NpcService, private snackbar: MatSnackBar, private addDialog: MatDialog /**, private updateDialog: MatDialog*/) { }
 
@@ -75,10 +76,6 @@ export class NpcComponent implements OnInit {
     });
 
     // then check if it exists within that and return true.
-  }
-
-  test(): void {
-    console.log('working');
   }
 
   detailsRouter(path, data) {
