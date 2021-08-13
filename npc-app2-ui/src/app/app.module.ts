@@ -54,6 +54,7 @@ import { PlayerCharsComponent } from './components/player-chars/player-chars.com
 import { AddPlayerCharDialogComponent } from './components/player-chars/add-player-char-dialog/add-player-char-dialog.component';
 import { PlayerCharDetailsComponent } from './components/player-chars/player-char-details/player-char-details.component';
 import { AddPlayerCharCampaignComponent } from './components/campaign/campaign-details/add-player-char-campaign/add-player-char-campaign.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { ItemComponent } from './components/item/item.component';
 
 @NgModule({
@@ -87,6 +88,7 @@ import { ItemComponent } from './components/item/item.component';
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     MatSliderModule,
     HttpClientModule,
     MatToolbarModule,
