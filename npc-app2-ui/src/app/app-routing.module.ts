@@ -10,6 +10,7 @@ import { LocationDetailsComponent } from './components/location/location-details
 import { PlayerCharsComponent } from './components/player-chars/player-chars.component';
 import { PlayerCharDetailsComponent } from './components/player-chars/player-char-details/player-char-details.component';
 import { ItemComponent } from './components/item/item.component';
+import { ItemDetailsComponent } from './components/item/item-details/item-details.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: 'item',
     component: ItemComponent
+  },
+  {
+    path:'item-details/:id',
+    component: ItemDetailsComponent
   },
   {
     path: 'home',

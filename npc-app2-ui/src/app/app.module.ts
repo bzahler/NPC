@@ -37,6 +37,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AddDialogComponent } from './components/npc/add-dialog/add-dialog.component';
 import { UpdateDialogComponent } from './components/npc/update-dialog/update-dialog.component';
+import { UpdateItemDialogComponent } from './components/item/update-item-dialog/update-item-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NpcDetailsComponent } from './components/npc/npc-details/npc-details.component';
 import { HomeComponent } from './components/home/home.component';
@@ -56,6 +57,9 @@ import { PlayerCharDetailsComponent } from './components/player-chars/player-cha
 import { AddPlayerCharCampaignComponent } from './components/campaign/campaign-details/add-player-char-campaign/add-player-char-campaign.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ItemComponent } from './components/item/item.component';
+import { AddItemDialogComponent } from './components/item/add-item-dialog/add-item-dialog.component';
+import { ItemDetailsComponent } from './components/item/item-details/item-details.component';
+
 
 @NgModule({
   declarations: [
@@ -63,7 +67,9 @@ import { ItemComponent } from './components/item/item.component';
     NavbarComponent,
     NpcComponent,
     AddDialogComponent,
+    AddItemDialogComponent,
     UpdateDialogComponent,
+    UpdateItemDialogComponent,
     NpcDetailsComponent,
     HomeComponent,
     CampaignComponent,
@@ -80,7 +86,8 @@ import { ItemComponent } from './components/item/item.component';
     AddPlayerCharDialogComponent,
     PlayerCharDetailsComponent,
     AddPlayerCharCampaignComponent,
-    ItemComponent
+    ItemComponent,
+    ItemDetailsComponent
   ],
   imports: [
     BrowserModule,
