@@ -66,6 +66,6 @@
         </mat-form-field><br>
     </mat-card-content>
 </mat-card>
-<button *ngIf="editable === false" mat-raised-button (click)="toggleEditable()">Edit</button>
-<button *ngIf="editable === true" mat-raised-button (click)="saveNpc()">Save</button>
-<button mat-raised-button routerLink="/playerChar">Back</button>
+<button *ngIf="editable === false" mat-raised-button color="primary" (click)="toggleEditable()">Edit</button>
+<button *ngIf="editable === true" mat-raised-button color="primary" (click)="saveNpc()">Save</button>
+<button mat-raised-button color="primary" routerLink="/playerChar">Back</button>

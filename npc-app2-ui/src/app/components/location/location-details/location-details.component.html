@@ -32,9 +32,9 @@
         </mat-form-field><br>
     </mat-card-content>
 </mat-card>
-<button *ngIf="editable === false" mat-raised-button (click)="toggleEditable()">Edit</button>
-<button *ngIf="editable === true" mat-raised-button (click)="saveLoc()">Save</button>
-<button mat-raised-button routerLink="/location">Back</button>
+<button *ngIf="editable === false" mat-raised-button color="primary" (click)="toggleEditable()">Edit</button>
+<button *ngIf="editable === true" mat-raised-button color="primary" (click)="saveLoc()">Save</button>
+<button mat-raised-button color="primary" routerLink="/location">Back</button>
 
 <!-- NPC Table -->
 
@@ -97,7 +97,7 @@
         </mat-paginator>
     </mat-card-content>
 </mat-card>
-<button mat-raised-button (click)="openAddNpcDialog()">Add</button>
+<button mat-raised-button color="primary" (click)="openAddNpcDialog()">Add</button>
 
 <!-- SubLocation Table -->
 
@@ -139,4 +139,4 @@
         </mat-paginator>
     </mat-card-content>
 </mat-card>
-<button mat-raised-button (click)="openAddSubLocDialog()">Add</button>
+<button mat-raised-button color="primary" (click)="openAddSubLocDialog()">Add</button>
