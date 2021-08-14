@@ -78,6 +78,18 @@ export class NpcComponent implements OnInit {
     // then check if it exists within that and return true.
   }
 
+  deleteNpc(index: number): void {
+    let npc = this.activeNpcList.slice(index,index+1)[0];
+    this.NpcService.removeNpc(npc.npcId).subscribe(
+      succ => {
+        this.activeNpcList.splice(index, 1);
+      },
+      err => {
+        this.snackbar.open('Failed to delete NPC.', 'OK', { duration: 5000 });
+      }
+    );
+  }
+
   detailsRouter(path, data) {
     this.router.navigate([path, data]);
   }

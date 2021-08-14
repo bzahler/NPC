@@ -9,14 +9,21 @@
 
 <div fxLayout="row wrap" fxLayoutGap="16px grid" class="content-width">
   <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let npc of activeNpcList; index as i;">
-    <mat-card class="card-size" (click)="detailsRouter('/npc-details', activeNpcList[i].npcId)">
-      <img mat-card-image *ngIf="activeNpcList[i].imgLink === null" class="img-size" src="../../../assets/Generic-Person.png">
+    <mat-card class="card-size">
+      <img mat-card-image *ngIf="activeNpcList[i].imgLink === null" class="img-size"
+        src="../../../assets/Generic-Person.png">
       <img mat-card-image *ngIf="activeNpcList[i].imgLink != null" class="img-size" src={{activeNpcList[i].imgLink}}>
+      <button mat-icon-button class="menu-button" color="primary" [matMenuTriggerFor]="menu"><mat-icon>more_horiz</mat-icon></button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item class="delete-button" color="warn" (click)="deleteNpc(i)">Delete</button>
+      </mat-menu>
       <br>
-      <mat-card-title>{{activeNpcList[i].name}}</mat-card-title>
-      <mat-card-subtitle>
-        {{activeNpcList[i].race}},&nbsp;{{activeNpcList[i].occupation}}
-      </mat-card-subtitle>
+      <div (click)="detailsRouter('/npc-details', activeNpcList[i].npcId)">
+        <mat-card-title>{{activeNpcList[i].name}}</mat-card-title>
+        <mat-card-subtitle>
+          {{activeNpcList[i].race}},&nbsp;{{activeNpcList[i].occupation}}
+        </mat-card-subtitle>
+      </div>
     </mat-card>
   </div>
 </div>

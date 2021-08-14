@@ -5,6 +5,14 @@
     margin-left: 10px;
 }
 
+.menu-button {
+    position: absolute;
+    z-index: 10;
+    right: 10px;
+    top: 0px;
+    width: 30px;
+}
+
 .card-size {
     background-color: rgba(128, 128, 128, 0.315);
     /* height: 150px; */
