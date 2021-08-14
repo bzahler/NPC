@@ -12,8 +12,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$npc-app2-ui-primary: mat-palette($mat-indigo);
-$npc-app2-ui-accent: mat-palette($mat-pink, A200, A100, A400);
+$npc-app2-ui-primary: mat-palette($mat-grey, 700, 600, 800);
+$npc-app2-ui-accent: mat-palette($mat-orange, 500, 400, 600);
 
 // The warn palette is optional (defaults to red).
 $npc-app2-ui-warn: mat-palette($mat-red);
