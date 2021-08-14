@@ -21,24 +21,24 @@
     <input matInput cdkFocusInitial [(ngModel)]="newNpc.town">
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <mat-label>Physical Description</mat-label>
-    <input matInput cdkFocusInitial [(ngModel)]="newNpc.physicalDesc">
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Voice Description</mat-label>
-    <input matInput cdkFocusInitial [(ngModel)]="newNpc.voiceDesc">
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Personality Description</mat-label>
-    <input matInput cdkFocusInitial [(ngModel)]="newNpc.personalityDesc">
-  </mat-form-field>
-  <mat-form-field appearance="outline">
     <mat-label>Organization</mat-label>
     <input matInput cdkFocusInitial [(ngModel)]="newNpc.organization">
   </mat-form-field>
   <mat-form-field appearance="outline">
+    <mat-label>Physical Description</mat-label>
+    <textarea matInput cdkFocusInitial [(ngModel)]="newNpc.physicalDesc"></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Voice Description</mat-label>
+    <textarea matInput cdkFocusInitial [(ngModel)]="newNpc.voiceDesc"></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Personality Description</mat-label>
+    <textarea matInput cdkFocusInitial [(ngModel)]="newNpc.personalityDesc"></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
     <mat-label>Comments</mat-label>
-    <input matInput cdkFocusInitial [(ngModel)]="newNpc.comments">
+    <textarea matInput cdkFocusInitial [(ngModel)]="newNpc.comments"></textarea>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
