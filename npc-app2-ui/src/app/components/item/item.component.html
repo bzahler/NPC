@@ -1,10 +1,22 @@
-<mat-card>
-    <mat-card-title>Yay</mat-card-title>
-    <mat-card-subtitle>wooo</mat-card-subtitle>
-    <p>alsdjfl;sf</p>
-    asdfkj;asdfasdlskdfjlsadjlkf
-</mat-card>
+<button mat-raised-button (click)="openAddDialog()">Add</button>
 
+<mat-form-field class="filter-spacing">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+  </mat-form-field>
 
-{{itemList[0]?.name}}
+  <mat-divider></mat-divider>
 
+  <div fxLayout="row wrap" fxLayoutGap="16px grid" class="content-width">
+    <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let npc of itemList; index as i;">
+      <mat-card class="card-size" (click)="detailsRouter('/npc-details', itemList[i].npcId)">
+        <img mat-card-image *ngIf="itemList[i].imgLink === null" class="img-size" src="../../../assets/Generic-Person.png">
+        <img mat-card-image *ngIf="itemList[i].imgLink != null" class="img-size" src={{itemList[i].imgLink}}>
+        <br>
+        <mat-card-title>{{itemList[i].name}}</mat-card-title>
+        <mat-card-subtitle>
+          {{itemList[i].race}},&nbsp;{{itemList[i].occupation}}
+        </mat-card-subtitle>
+      </mat-card>
+    </div>
+  </div>
