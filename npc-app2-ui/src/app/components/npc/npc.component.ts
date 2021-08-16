@@ -67,7 +67,7 @@ export class NpcComponent implements OnInit {
     this.activeNpcList = [];
 
     // concatenate the values of an object and lowercase them (and the filtervalue)
-    this.baseNpcList.forEach( ele => {
+    this.baseNpcList.forEach(ele => {
       let values = Object.values(ele);
       let stringified = values.join().toLowerCase();
       if (stringified.includes(filterValue.toLowerCase())) {
@@ -79,15 +79,17 @@ export class NpcComponent implements OnInit {
   }
 
   deleteNpc(index: number): void {
-    let npc = this.activeNpcList.slice(index,index+1)[0];
-    this.NpcService.removeNpc(npc.npcId).subscribe(
-      succ => {
-        this.activeNpcList.splice(index, 1);
-      },
-      err => {
-        this.snackbar.open('Failed to delete NPC.', 'OK', { duration: 5000 });
-      }
-    );
+    let npc = this.activeNpcList.slice(index, index + 1)[0];
+    if (confirm("Are you sure you want to delete " + npc.name + "?")) {
+      this.NpcService.removeNpc(npc.npcId).subscribe(
+        succ => {
+          this.activeNpcList.splice(index, 1);
+        },
+        err => {
+          this.snackbar.open('Failed to delete NPC.', 'OK', { duration: 5000 });
+        }
+      );
+    }
   }
 
   detailsRouter(path, data) {

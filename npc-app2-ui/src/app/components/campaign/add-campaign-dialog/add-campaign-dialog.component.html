@@ -6,7 +6,9 @@
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Start Date</mat-label>
-    <input matInput cdkFocusInitial required [(ngModel)]="newCampaign.startDate">
+    <input matInput [matDatepicker]="picker" cdkFocusInitial required [(ngModel)]="newCampaign.startDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Setting</mat-label>

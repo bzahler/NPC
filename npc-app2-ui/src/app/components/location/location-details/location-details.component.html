@@ -121,6 +121,7 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Details </th>
                 <td mat-cell *matCellDef="let element">
                     <mat-icon (click)="detailsRouter('/location-details', element.locationId)">description</mat-icon>
+                                      "detailsRouter('/npc-details', element.npcId)
                 </td>
             </ng-container>
 

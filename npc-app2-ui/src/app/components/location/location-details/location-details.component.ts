@@ -1,14 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Location } from 'src/app/entities/Location';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { LocationService } from 'src/app/services/location.service';
-import { LocationLists } from 'src/app/entities/LocationLists';
+import { Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from 'src/app/entities/Location';
+import { LocationLists } from 'src/app/entities/LocationLists';
 import { Npc } from 'src/app/entities/Npc';
-import { MatDialog } from '@angular/material/dialog';
+import { LocationService } from 'src/app/services/location.service';
 import { AddLocationNpcComponent } from './add-location-npc/add-location-npc.component';
 import { AddLocationSublocComponent } from './add-location-subloc/add-location-subloc.component';
 
@@ -42,7 +42,13 @@ export class LocationDetailsComponent implements OnInit {
     'name', 'summary', 'details', 'remove'
   ];
 
-  constructor(private activeRoute: ActivatedRoute, private snackbar: MatSnackBar, private locationService: LocationService, private addNpcDialog: MatDialog, private addSubLocDialog: MatDialog, private router: Router) { }
+  constructor(private activeRoute: ActivatedRoute, private snackbar: MatSnackBar, private locationService: LocationService,
+    private addNpcDialog: MatDialog, private addSubLocDialog: MatDialog, private router: Router) {
+    // override the route reuse strategy
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+  }
 
   ngOnInit(): void {
     this.activeRoute.paramMap.subscribe(params => {

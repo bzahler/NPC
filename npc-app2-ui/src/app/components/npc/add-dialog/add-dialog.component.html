@@ -6,39 +6,43 @@
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Race</mat-label>
-    <input matInput cdkFocusInitial required [(ngModel)]="newNpc.race">
+    <input matInput required [(ngModel)]="newNpc.race" maxlength="10">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Occupation</mat-label>
-    <input matInput cdkFocusInitial required [(ngModel)]="newNpc.occupation">
+    <input matInput required [(ngModel)]="newNpc.occupation" maxlength="15">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Country</mat-label>
-    <input matInput cdkFocusInitial [(ngModel)]="newNpc.country">
+    <input matInput [(ngModel)]="newNpc.country">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Town</mat-label>
-    <input matInput cdkFocusInitial [(ngModel)]="newNpc.town">
+    <input matInput [(ngModel)]="newNpc.town">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Organization</mat-label>
-    <input matInput cdkFocusInitial [(ngModel)]="newNpc.organization">
+    <input matInput [(ngModel)]="newNpc.organization">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Physical Description</mat-label>
-    <textarea matInput cdkFocusInitial [(ngModel)]="newNpc.physicalDesc"></textarea>
+    <textarea matInput [(ngModel)]="newNpc.physicalDesc"></textarea>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Voice Description</mat-label>
-    <textarea matInput cdkFocusInitial [(ngModel)]="newNpc.voiceDesc"></textarea>
+    <textarea matInput [(ngModel)]="newNpc.voiceDesc"></textarea>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Personality Description</mat-label>
-    <textarea matInput cdkFocusInitial [(ngModel)]="newNpc.personalityDesc"></textarea>
+    <textarea matInput [(ngModel)]="newNpc.personalityDesc"></textarea>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Comments</mat-label>
-    <textarea matInput cdkFocusInitial [(ngModel)]="newNpc.comments"></textarea>
+    <textarea matInput [(ngModel)]="newNpc.comments"></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Image Link</mat-label>
+    <textarea matInput [(ngModel)]="newNpc.imgLink"></textarea>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

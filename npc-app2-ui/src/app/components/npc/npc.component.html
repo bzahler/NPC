@@ -18,7 +18,7 @@
         <button mat-menu-item class="delete-button" color="warn" (click)="deleteNpc(i)">Delete</button>
       </mat-menu>
       <br>
-      <div (click)="detailsRouter('/npc-details', activeNpcList[i].npcId)">
+      <div (click)="detailsRouter('/npc-details', activeNpcList[i].npcId)" class="cursor-pointer">
         <mat-card-title>{{activeNpcList[i].name}}</mat-card-title>
         <mat-card-subtitle>
           {{activeNpcList[i].race}},&nbsp;{{activeNpcList[i].occupation}}
