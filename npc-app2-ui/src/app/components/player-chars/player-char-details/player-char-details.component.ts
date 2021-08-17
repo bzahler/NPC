@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PlayerCharacter } from 'src/app/entities/PlayerCharacter';
 import { PlayerCharacterService } from 'src/app/services/player-character.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-player-char-details',
@@ -15,7 +15,7 @@ export class PlayerCharDetailsComponent implements OnInit {
   data: PlayerCharacter;
   editable: boolean = false;
 
-  constructor(private activeRoute: ActivatedRoute, private snackbar: MatSnackBar, private pcService: PlayerCharacterService) { }
+  constructor(private router: Router, private activeRoute: ActivatedRoute, private snackbar: MatSnackBar, private pcService: PlayerCharacterService) { }
 
   ngOnInit(): void {
     this.activeRoute.paramMap.subscribe(params => {
@@ -57,5 +57,20 @@ export class PlayerCharDetailsComponent implements OnInit {
       }
     );
     this.editable = false;
+  }
+
+  removePC() {
+    this.pcService.removePlayerChar(this.data.playerId).subscribe(
+      succ => {
+        this.deleteRouter('/playerChar');
+      },
+      err => {
+        this.snackbar.open('Failed to delete ' + this.data.charName, 'OK', { duration: 5000 });
+      }
+    )
+  }
+
+  deleteRouter(path) {
+    this.router.navigate([path]);
   }
 }

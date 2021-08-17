@@ -1,3 +1,8 @@
+<button *ngIf="editable === false" mat-raised-button color="primary" (click)="toggleEditable()">Edit</button>
+<button *ngIf="editable === true" mat-raised-button color="primary" (click)="saveNpc()">Save</button>
+<button *ngIf="editable === true" mat-raised-button color="warn" (click)="removePC()">Delete</button>
+<button mat-raised-button color="primary" routerLink="/playerChar">Back</button>
+
 <mat-card>
     <mat-card-title>{{data.charName}}</mat-card-title>
     <mat-card-subtitle>{{data.charRace}} {{data.charClass}}</mat-card-subtitle>
@@ -66,6 +71,3 @@
         </mat-form-field><br>
     </mat-card-content>
 </mat-card>
-<button *ngIf="editable === false" mat-raised-button color="primary" (click)="toggleEditable()">Edit</button>
-<button *ngIf="editable === true" mat-raised-button color="primary" (click)="saveNpc()">Save</button>
-<button mat-raised-button color="primary" routerLink="/playerChar">Back</button>

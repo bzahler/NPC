@@ -41,8 +41,8 @@ export class NpcComponent implements OnInit {
   // TODO Add dialog needs to be changed to NPC add dialog to not conflict
   openAddDialog(): void {
     const dialogRef = this.addDialog.open(AddDialogComponent, {
-      width: '60%',
-      height: '50%'
+      width: '75%',
+      height: '70%'
     });
     dialogRef.afterClosed().subscribe(dialogReturn => {
       if (dialogReturn) {

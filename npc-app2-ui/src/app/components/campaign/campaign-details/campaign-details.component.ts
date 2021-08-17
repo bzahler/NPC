@@ -236,6 +236,21 @@ export class CampaignDetailsComponent implements OnInit {
     });
   }
 
+  removeCampaign() {
+    this.campaignService.removeCampaign(this.data.campaignId).subscribe(
+      succ => {
+        this.deleteRouter('/campaign');
+      },
+      err => {
+        this.snackbar.open('Failed to delete ' + this.data.name, 'OK', { duration: 5000 });
+      }
+    )
+  }
+
+  deleteRouter(path) {
+    this.router.navigate([path]);
+  }
+
   detailsRouter(path, data) {
     this.router.navigate([path, data]);
   }

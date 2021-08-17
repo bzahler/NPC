@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NpcService } from 'src/app/services/npc.service';
 import { Npc } from 'src/app/entities/Npc';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,7 +15,7 @@ export class NpcDetailsComponent implements OnInit {
   data: Npc;
   editable: boolean = false;
 
-  constructor(private activeRoute: ActivatedRoute, private snackbar: MatSnackBar, private npcService: NpcService) { }
+  constructor(private router: Router, private activeRoute: ActivatedRoute, private snackbar: MatSnackBar, private npcService: NpcService) { }
 
   ngOnInit(): void {
     this.activeRoute.paramMap.subscribe(params => {
@@ -47,7 +47,6 @@ export class NpcDetailsComponent implements OnInit {
   }
 
   saveNpc() {
-
     this.npcService.updateNpc(this.data).subscribe(
       succ => {
         this.snackbar.open('Updated ' + this.data.name, 'OK', { duration: 5000 });
@@ -58,5 +57,20 @@ export class NpcDetailsComponent implements OnInit {
       }
     );
     this.editable = false;
+  }
+
+  removeNpc() {
+    this.npcService.removeNpc(this.data.npcId).subscribe(
+      succ => {
+        this.deleteRouter('/npc');
+      },
+      err => {
+        this.snackbar.open('Failed to delete ' + this.data.name, 'OK', { duration: 5000 });
+      }
+    )
+  }
+
+  deleteRouter(path) {
+    this.router.navigate([path]);
   }
 }

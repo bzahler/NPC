@@ -187,6 +187,21 @@ export class LocationDetailsComponent implements OnInit {
     });
   }
 
+  removeLoc() {
+    this.locationService.removeLocation(this.data.locationId).subscribe(
+      succ => {
+        this.deleteRouter('/location');
+      },
+      err => {
+        this.snackbar.open('Failed to delete ' + this.data.name, 'OK', { duration: 5000 });
+      }
+    )
+  }
+
+  deleteRouter(path) {
+    this.router.navigate([path]);
+  }
+
   detailsRouter(path, data) {
     this.router.navigate([path, data]);
   }

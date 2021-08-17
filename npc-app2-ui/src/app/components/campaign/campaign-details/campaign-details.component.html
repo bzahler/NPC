@@ -1,3 +1,8 @@
+<button *ngIf="editable === false" mat-raised-button color="primary" (click)="toggleEditable()">Edit</button>
+<button *ngIf="editable === true" mat-raised-button color="primary" (click)="saveCampaign()">Save</button>
+<button *ngIf="editable === true" mat-raised-button color="warn" (click)="removeCampaign()">Delete</button>
+<button mat-raised-button color="primary" routerLink="/campaign">Back</button>
+
 <mat-card>
     <mat-card-title>{{data.name}}</mat-card-title>
     <img *ngIf="data.imgLink != null" src={{data.imgLink}} height="200" width="200">
@@ -42,9 +47,6 @@
         </mat-form-field><br>
     </mat-card-content>
 </mat-card>
-<button *ngIf="editable === false" mat-raised-button color="primary" (click)="toggleEditable()">Edit</button>
-<button *ngIf="editable === true" mat-raised-button color="primary" (click)="saveCampaign()">Save</button>
-<button mat-raised-button color="primary" routerLink="/campaign">Back</button>
 
 <!-- NPC Table -->
 
