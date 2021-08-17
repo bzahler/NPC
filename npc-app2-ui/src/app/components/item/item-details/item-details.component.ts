@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ItemService } from 'src/app/services/item.service';
 import { Item } from 'src/app/entities/Item';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,7 +15,7 @@ export class ItemDetailsComponent implements OnInit {
   data: Item;
   editable: boolean = false;
 
-  constructor(private activeRoute: ActivatedRoute, private snackbar: MatSnackBar, private itemService: ItemService) { }
+  constructor(private router: Router, private activeRoute: ActivatedRoute, private snackbar: MatSnackBar, private itemService: ItemService) { }
 
   ngOnInit(): void {
     this.activeRoute.paramMap.subscribe(params => {
@@ -58,5 +58,20 @@ export class ItemDetailsComponent implements OnInit {
       }
     );
     this.editable = false;
+  }
+
+  removeItem() {
+    this.itemService.removeItem(this.data.itemId).subscribe(
+      succ => {
+        this.deleteRouter('/item');
+      },
+      err => {
+        this.snackbar.open('Failed to delete ' + this.data.name, 'OK', { duration: 5000 });
+      }
+    )
+  }
+
+  deleteRouter(path) {
+    this.router.navigate([path]);
   }
 }

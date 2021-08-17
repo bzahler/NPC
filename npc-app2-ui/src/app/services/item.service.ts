@@ -33,6 +33,13 @@ export class ItemService {
     return result;
   }
 
+  removeItem(itemId: String): Observable<Object> {
+    console.log('Removing item: ', itemId);
+    const result = this.client.post('http://localhost:8080/item/delete', itemId);
+    
+    return result;
+  }
+
   getById(id: string) {
     return this.data.find(item => item.itemId === id);
   }
