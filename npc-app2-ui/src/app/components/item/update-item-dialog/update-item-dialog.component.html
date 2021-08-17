@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Update Item</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="record.name">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Type</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="record.type">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Attunement</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="record.attunement">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Summary</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="record.summary">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="record.description">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Notes</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="record.notes">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Tags</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="record.tags">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" class="lightblue" [mat-dialog-close]="record">OK</button>
+  <button mat-raised-button color="primary" class="lightblue" (click)="onNoClick()">Cancel</button>
+</div>

@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Add a new Item</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="newItem.name">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Type</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="newItem.type">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Attunement</mat-label>
+    <input matInput cdkFocusInitial required [(ngModel)]="newItem.attunement">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Summary</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newItem.summary">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newItem.description">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Notes</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newItem.notes">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Tags</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="newItem.tags">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" [mat-dialog-close]="newItem">OK</button>
+  <button mat-raised-button color="primary" (click)="onNoClick()">Cancel</button>
+</div>

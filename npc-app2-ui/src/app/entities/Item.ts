@@ -6,6 +6,6 @@ export class Item {
 	public summary: string;
 	public description: string;
 	public notes: string;
-	public tages: string;
+	public tags: string;
 	public img: string;
 }
