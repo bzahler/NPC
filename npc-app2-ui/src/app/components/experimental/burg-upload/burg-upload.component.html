@@ -1,0 +1,6 @@
+<input type="file" (change)="selectBurgs($event)">
+<button mat-raised-button color="primary" (click)="uploadBurgs()">Upload Burgs</button>
+
+<p style="color: white">{{burgs[0]?.name}}</p>
+<p style="color: white">{{burgs[0]?.summary}}</p>
+<p style="white-space: pre-wrap;color:white;">{{burgs[0]?.dmDesc}}</p>

@@ -59,6 +59,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ItemComponent } from './components/item/item.component';
 import { AddItemDialogComponent } from './components/item/add-item-dialog/add-item-dialog.component';
 import { ItemDetailsComponent } from './components/item/item-details/item-details.component';
+import { ExperimentalComponent } from './components/experimental/experimental.component';
+import { BurgUploadComponent } from './components/experimental/burg-upload/burg-upload.component';
 
 
 @NgModule({
@@ -87,7 +89,9 @@ import { ItemDetailsComponent } from './components/item/item-details/item-detail
     PlayerCharDetailsComponent,
     AddPlayerCharCampaignComponent,
     ItemComponent,
-    ItemDetailsComponent
+    ItemDetailsComponent,
+    ExperimentalComponent,
+    BurgUploadComponent
   ],
   imports: [
     BrowserModule,

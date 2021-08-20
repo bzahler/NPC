@@ -11,6 +11,8 @@ import { PlayerCharsComponent } from './components/player-chars/player-chars.com
 import { PlayerCharDetailsComponent } from './components/player-chars/player-char-details/player-char-details.component';
 import { ItemComponent } from './components/item/item.component';
 import { ItemDetailsComponent } from './components/item/item-details/item-details.component';
+import { ExperimentalComponent } from './components/experimental/experimental.component';
+import { BurgUploadComponent } from './components/experimental/burg-upload/burg-upload.component';
 
 const routes: Routes = [
   {
@@ -52,6 +54,14 @@ const routes: Routes = [
   {
     path:'item-details/:id',
     component: ItemDetailsComponent
+  },
+  {
+    path: 'experimental',
+    component: ExperimentalComponent
+  },
+  {
+    path: 'burg-upload',
+    component: BurgUploadComponent
   },
   {
     path: 'home',
