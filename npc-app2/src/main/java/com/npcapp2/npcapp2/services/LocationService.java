@@ -12,4 +12,5 @@ public interface LocationService {
 	void updateOne(Location loc);
 	LocationLists getListsById(String locId);
 	List<Location> getSubLocList(String[] listSubLoc);
+	List<Location> addMultiple(List<Location> locs);
 }

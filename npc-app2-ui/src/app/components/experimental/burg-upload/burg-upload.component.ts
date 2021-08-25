@@ -1,6 +1,7 @@
 import { Location } from 'src/app/entities/Location';
 import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
+import { LocationService } from 'src/app/services/location.service';
 
 @Component({
   selector: 'app-burg-upload',
@@ -12,7 +13,7 @@ export class BurgUploadComponent implements OnInit {
   uploadedBurgs: Burg[] = [];
   burgs: Location[] = [];
 
-  constructor() { }
+  constructor(private locService: LocationService) { }
 
   ngOnInit(): void {
   }
@@ -40,19 +41,30 @@ export class BurgUploadComponent implements OnInit {
   }
 
   uploadBurgs(): void {
-    this.uploadedBurgs.forEach( burg => {
-      let loc = new Location;
-      loc.name = burg.Burg;
-      loc.summary = burg.Capital + " " + burg.Citadel + " " + burg.Plaza + " " + burg.Port + " " + burg['Shanty Town'] + " " + burg.Walls + " " + burg.Temple;
-      let stringy = JSON.stringify(burg);
-      console.log(stringy);
-      stringy = stringy.split(",").join("\n");
-      console.log(stringy);
-      loc.dmDesc = stringy;
-      this.burgs.push(loc);
-    });
+    if (this.uploadedBurgs.length > 0) {
+      this.uploadedBurgs.forEach(burg => {
+        let loc = new Location;
+        loc.name = burg.Burg;
+        loc.summary = burg.Capital + " " + burg.Citadel + " " + burg.Plaza + " " + burg.Port + " " + burg['Shanty Town'] + " " + burg.Walls + " " + burg.Temple;
+        let stringy = JSON.stringify(burg);
+        console.log(stringy);
+        stringy = stringy.split(",").join("\n");
+        console.log(stringy);
+        loc.dmDesc = stringy;
+        this.burgs.push(loc);
+      });
 
-    
+      this.locService.addLocations(this.burgs).subscribe(
+        succ => {
+          console.log('success');
+        },
+        err => {
+          console.log('fail');
+        }
+      );
+
+      this.uploadedBurgs = [];
+    }
   }
 }
 

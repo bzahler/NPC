@@ -12,5 +12,6 @@ export class Npc {
     public organization: string;
     public comments: string;
     public imgLink: string;
-
 }
+
+

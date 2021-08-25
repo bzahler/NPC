@@ -37,6 +37,13 @@ public class LocationController {
 		return new ResponseEntity<>(locServ.addOne(loc), HttpStatus.OK);
 	}
 
+	@PostMapping("/addMultiple")
+	public ResponseEntity<List<Location>> addMultiple(@RequestBody List<Location> locs) {
+		System.out.println("LocationController reached. addMultiple()");
+		System.out.println(locs);
+		return new ResponseEntity<>(locServ.addMultiple(locs), HttpStatus.OK);
+	}
+	
 	@PostMapping("/update")
 	public ResponseEntity<HttpStatus> updateOne(@RequestBody Location loc) {
 		System.out.println("LocationController reached. updateOne()");

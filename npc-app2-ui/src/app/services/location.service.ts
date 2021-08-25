@@ -27,6 +27,13 @@ export class LocationService {
     return result;
   }
 
+  addLocations(newLocs: Location[]): Observable<Location> {
+    console.log('Adding multiple location.');
+    const result = this.client.post<Location>('http://localhost:8080/loc/addMultiple', newLocs);
+
+    return result;
+  }
+
   updateLocation(updatedLoc: Location): Observable<Location> {
     console.log('Updating location: ', updatedLoc);
     const result = this.client.post<Location>('http://localhost:8080/loc/update', updatedLoc);

@@ -86,4 +86,10 @@ public class LocationServiceImpl implements LocationService {
 		}
 		return subLocs;
 	}
+
+	@Override
+	public List<Location> addMultiple(List<Location> locs) {
+		System.out.println("LocationService reached: addMultiple");
+		return locRepo.saveAll(locs);
+	}
 }
