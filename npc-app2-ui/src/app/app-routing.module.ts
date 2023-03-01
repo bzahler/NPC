@@ -13,6 +13,8 @@ import { ItemComponent } from './components/item/item.component';
 import { ItemDetailsComponent } from './components/item/item-details/item-details.component';
 import { ExperimentalComponent } from './components/experimental/experimental.component';
 import { BurgUploadComponent } from './components/experimental/burg-upload/burg-upload.component';
+import { MonsterComponent } from './components/monster/monster.component';
+import { MonsterDetailsComponent } from './components/monster/monster-details/monster-details.component';
 
 const routes: Routes = [
   {
@@ -54,6 +56,14 @@ const routes: Routes = [
   {
     path:'item-details/:id',
     component: ItemDetailsComponent
+  },
+  {
+    path: 'monster',
+    component: MonsterComponent
+  },
+  {
+    path:'monster-details/:id',
+    component: MonsterDetailsComponent
   },
   {
     path: 'experimental',

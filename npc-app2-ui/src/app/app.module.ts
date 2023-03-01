@@ -61,6 +61,10 @@ import { AddItemDialogComponent } from './components/item/add-item-dialog/add-it
 import { ItemDetailsComponent } from './components/item/item-details/item-details.component';
 import { ExperimentalComponent } from './components/experimental/experimental.component';
 import { BurgUploadComponent } from './components/experimental/burg-upload/burg-upload.component';
+import { MonsterComponent } from './components/monster/monster.component';
+import { MonsterDetailsComponent } from './components/monster/monster-details/monster-details.component';
+import { AddMonsterDialogComponent } from './components/monster/add-monster-dialog/add-monster-dialog.component';
+import { UpdateMonsterDialogComponent } from './components/monster/update-monster-dialog/update-monster-dialog.component';
 
 
 @NgModule({
@@ -91,7 +95,11 @@ import { BurgUploadComponent } from './components/experimental/burg-upload/burg-
     ItemComponent,
     ItemDetailsComponent,
     ExperimentalComponent,
-    BurgUploadComponent
+    BurgUploadComponent,
+    MonsterComponent,
+    MonsterDetailsComponent,
+    AddMonsterDialogComponent,
+    UpdateMonsterDialogComponent
   ],
   imports: [
     BrowserModule,

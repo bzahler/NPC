@@ -1,0 +1,35 @@
+<button *ngIf="editable === false" mat-raised-button color="primary" (click)="toggleEditable()">Edit</button>
+<button *ngIf="editable === true" mat-raised-button color="primary" (click)="saveMonster()">Save</button>
+<button *ngIf="editable === true" mat-raised-button color="warn" (click)="removeMonster()">Delete</button>
+<button mat-raised-button color="primary" routerLink="/monster">Back</button>
+
+<mat-card>
+    <mat-card-title>{{data.name}}</mat-card-title>
+    <mat-card-subtitle>{{data.monsterType}} {{data.monsterSubType}}</mat-card-subtitle>
+    <!-- <img *ngIf="data.imgLink != null" src={{data.imgLink}} height="200" width="200"> -->
+    <mat-card-content *ngIf="editable === false">
+        <mat-list>
+            <mat-list-item>Monster ID: {{data.monsterId}}</mat-list-item>
+            <mat-list-item>Monster Name: {{data.name}}</mat-list-item>
+        </mat-list>
+    </mat-card-content>
+    <mat-card-content *ngIf="editable === true">
+        <mat-form-field appearance="standard">
+            <mat-label>Monster Name:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.name">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>Type:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.monsterType">
+        </mat-form-field><br>
+        <mat-form-field appearance="standard">
+            <mat-label>SubType:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.monsterSubType">
+        </mat-form-field><br>
+        <!-- <mat-form-field appearance="standard">
+            <mat-label>Image URL:</mat-label>
+            <input matInput cdkFocusInitial [(ngModel)]="data.imgLink">
+        </mat-form-field><br> -->
+
+    </mat-card-content>
+</mat-card>
